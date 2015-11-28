@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<LINK href="<{$web_host}>/common/admin/css/admin.css" type="text/css" rel="stylesheet">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script type="text/javascript" src="<{$web_host}>/common/libs/jquery-1.9.1.js"></script>
+<script type="text/javascript" src="<{$web_host}>/common/libs/jquery-migrate-1.1.0.min.js"></script>
+<script type="text/javascript" src="<{$web_host}>/common/libs/xheditor-1.2.1/xheditor-1.2.1.min.js"></script>
+<script type="text/javascript" src="<{$web_host}>/common/libs/xheditor-1.2.1/xheditor_lang/zh-cn.js"></script>
+<script type="text/javascript" src="<{$web_host}>/common/libs/upload/jquery.uploadify.min.js"></script>
+<link rel="stylesheet" type="text/css" href="<{$web_host}>/common/libs/upload/uploadify.css">
+<script type="text/javascript">
+		$(function() {
+			$('#file_upload').uploadify({
+				'formData'     : {
+				},
+				'swf'      : '<{$web_host}>/common/libs/upload/uploadify.swf',
+				'uploader' : '<{$web_app_url}>/upload/upload/', 
+				'multi':true,
+				'auto':true,
+				'fileTypeDesc':"请选择图片文件",
+				'fileTypeExts':'*.jpg;*.jpeg;*.png;*.gif;*.bmp',
+				'fileSizeLimit': '10240KB', 
+				'buttonText':"选择图片", 
+				'width' : 100, 
+				'height':20, 
+				'cancelImg' : '<{$web_host}>/common/libs/upload/uploadify-cancel.png',
+				'onUploadError' : function(file, errorCode, errorMsg, errorString) {
+			            alert('The file ' + file.name + ' could not be uploaded: ' + errorString);
+			    },
+			    'onUploadStart' : function(file) {
+			    	$("#picstate").val("1"); 
+		        },
+		        'onCancel' : function(file) {
+		        	$("#picstate").val("0"); 
+		        },
+			    'onUploadSuccess' : function(file, data, response) {
+		            //alert('The file ' + file.name + ' was successfully uploaded with a response of ' + response + ':' + data);
+		            var myObject = eval('(' + data + ')');
+		            //alert(myObject.result);
+		            //alert(myObject.msg);
+		            if(myObject.result == '0'){
+			            $("#img").html(myObject.msg);
+			            $("#picstate").val("0");//0表示没有图片上传 1表示图片上传中 2表示图片上传成功
+		            }else{
+		            	$("#hidFileID").attr("value",myObject.result);
+			            $("#img").html("<img style=\" max-width:800px; max-height:600px;\" src='"+myObject.msg+"'/>");
+			            $("#picstate").val("2");
+		            }
+		            
+			    }
+		});
+
+		});
+	</script>
+
+</head>
+<body>
+<TABLE cellSpacing=0 cellPadding=0 width="100%" align=center border=0>
+  	<TR height=28><TD background="<{$web_host}>/common/admin/images/title_bg1.jpg">当前位置:添加首页大图</TD></TR>
+  	<TR><TD bgColor=#b1ceef height=1></TD></TR>
+  	<TR height=20>
+    	<TD background="<{$web_host}>/common/admin/images/shadow_bg.jpg"></TD>
+	</TR>
+</TABLE>
+ <table width="100%" border="0" align="left" cellpadding="0" cellspacing="0">
+                              
+                              <form method="post" action="<{$web_app_url}>/picture/addpic">
+                               <tr>
+                                    <td width="107" height="30"><div align="right">跳转链接：</div></td>
+                                    <td height="40" colspan="2">&nbsp;
+                                        <input type="text" name="url" id="name" size="40" class="inputcss" />
+										</td>
+                                  </tr>
+                               
+                                <td height="40"><div align="right">图片：</div></td>
+                                    <td height="40" colspan="2">&nbsp;                
+											<div id="img"></div>
+												<input id="file_upload" name="file_upload" type="file" multiple >
+												<input type="hidden" name="picid" id="hidFileID" value="" />
+												<input type="hidden" name="picstate" id="picstate" value="0" />图片大小不能超过10M	
+									</td>
+								</tr>
+								
+								<tr>
+									<td><div align="right"></div></td>
+									<td height="40" colspan="2">
+										<div align="left">
+											<input name="submit" type="submit" value="确认" />&nbsp;&nbsp;
+										</div>
+									</td>
+								</tr>
+                   			</form>
+                             
+</table>
+
+
+</body>
+</html>

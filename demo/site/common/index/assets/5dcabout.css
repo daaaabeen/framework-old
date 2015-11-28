@@ -1,0 +1,151 @@
+.main {
+	padding-top: 16px;
+	padding-bottom: 30px;
+	background-image: url(./images/main-bg.jpg);
+	background-repeat: no-repeat;
+	background-position: 50% 0;
+}/*flowstep*/
+.icon-ast {
+	background-image: url(../images/phoenix/icon/icon_about.png?v=45);
+	background-repeat: no-repeat;
+}
+.about-content {
+	width: 100%;
+	background: #FFF;
+	border-top: 2px solid rgb(126,12,110);
+}
+.menu-nav {
+	width: 190px;
+	float: left;
+}
+.menu-nav ul li {
+	width: 100%;
+	height: 48px;
+	border-bottom: 1px solid #e3e3e3;
+}
+.menu-nav ul li a {
+	width: 100%;
+	height: 48px;
+	line-height: 48px;
+	display: block;
+	text-indent: 60px;
+	font-size: 14px;
+}
+.menu-nav ul li.select a {
+	background-color: rgb(126,12,110);
+	color: #FFF;
+}
+.menu-nav ul li a.about {
+	background-position: 20px 16px;
+}
+.menu-nav ul li a.contact {
+	background-position: 20px -20px;
+}
+.menu-nav ul li a.help {
+	background-position: 20px -58px;
+}
+.menu-nav ul li a.intro {
+	background-position: 20px -95px;
+}
+.menu-nav ul li a.service {
+	background-position: 20px -285px;
+}
+.menu-nav ul li.select a.about {
+	background-position: 20px -132px;
+}
+.menu-nav ul li.select a.contact {
+	background-position: 20px -168px;
+}
+.menu-nav ul li.select a.help {
+	background-position: 20px -206px;
+}
+.menu-nav ul li.select a.intro {
+	background-position: 20px -243px;
+}
+.menu-nav ul li.select a.service {
+	background-position: 20px -324px;
+}
+.maincontent {
+	width: 649px;
+	min-height: 300px;
+	padding: 0px 60px 50px;
+	float: right;
+	border-left: 1px solid #e3e3e3;
+}
+.maincontent .tit-wrap h3 {
+	padding: 0px;
+	text-indent: 0px;
+}
+.content-box {
+	width: 100%;
+	padding: 20px 0px;
+}
+.con-article {
+	width: 100%;
+}
+.con-article .img-box {
+	text-align: center;
+}
+.con-article h3 {
+	font-size: 18px;
+	line-height: 30px;
+	color: #ED5E58;
+}
+.con-article p {
+	font-size: 14px;
+	line-height: 30px;
+	padding-bottom: 30px;
+}
+.con-list {
+	width: 100%;
+}
+.con-list ul li {
+	width: 100%;
+	padding: 30px 0px;
+	border-bottom: 1px solid #e4e4e4;
+}
+.con-list ul li .img-box {
+	width: 150px;
+	height: 150px;
+	float: left;
+}
+.con-list ul li .img-box img {
+	width: 150px;
+	height: 150px;
+	border-radius: 50%;
+	behavior: url(static/zhongchou/css/phoenix/PIE.htc);
+	position: relative;
+}
+.con-list ul li h3 {
+	font-size: 18px;
+	line-height: 30px;
+	color: #ED5E58;
+	margin-left: 170px;
+}
+.con-list ul li p {
+	font-size: 14px;
+	line-height: 22px;
+	margin-left: 170px;
+	padding: 5px 0px 0px;
+}
+.con-default {
+	width: 100%;
+}
+.con-default h2 {
+	font-size: 20px;
+	line-height: 36px;
+	padding: 10px 0px 0px;
+	color: #000;
+	font-weight: bold;
+}
+.con-default h3 {
+	font-size: 14px;
+	line-height: 26px;
+	font-weight: bold;
+	;
+	color: #000;
+}
+.con-default p {
+	font-size: 14px;
+	padding-bottom: 10px;
+}

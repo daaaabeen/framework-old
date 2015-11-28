@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<title>南开集赞网</title>
+<meta name="keywords" content="南开 集赞 创业 项目 投资 支持">
+<meta name="description" content="在南开集赞网发布活动或项目，获得投资支持，实现你的梦想">
+<link rel="bookmark" type="image/x-icon" href="#">
+<!--各种图标，多个设备支持-->
+<link rel="shortcut icon" type="image/png" href="#">
+<link rel="icon" type="image/png" href="#">
+<link rel="apple-touch-icon" href="#">
+<!--public js&css start-->
+<!--public js&css end -->
+<script type="text/javascript" src="<{$web_host}>/common/index/assets/jqueryv182.js"></script>
+<script type="text/javascript" src="<{$web_host}>/common/index/assets/slide.js"></script>
+<script type="text/javascript" src="<{$web_host}>/common/index/js/fun.js"></script>
+<script type="text/javascript">var web_host = "<{$web_host}>"</script>
+<link rel="stylesheet" type="text/css" href="<{$web_host}>/common/index/assets/style2.css">
+</head>
+
+<body>
+<{include file="header.html"}>
+<link rel="stylesheet" type="text/css" href="<{$web_host}>/common/index/assets/style1.css">
+<{if $picList}>
+<div class="banner">
+  <div class="wrap">
+    <style>
+				#JS-banner_ul{position:relative;}
+				#JS-banner_ul li{float:left}
+			</style>
+    
+    <div class="wrap" style="overflow:hidden;">
+      <ul id="JS-banner_ul" class="clearfix" style="height: 392px; width: 5760px; margin-left: 0px;">
+        <{section name=pl loop=$picList}>
+        <li> 
+        	<a target="_blank" href="<{$picList[pl].fp_url}>"> 
+        		<img data-load="ok" data-init="ok" src="<{$web_host}>/common/upload/images/<{$picList[pl].pic_link}>" class="lz" data-src="<{$web_host}>/common/upload/images/<{$picList[pl].pic_link}>" height="392" width="960"> 
+        	</a> 
+        </li>
+        <{/section}>
+      </ul>
+    </div>
+    <{if $smarty.section.pl.index > 1}>
+    <div class="focus-btn"> 
+    	<a id="JS-banner_pre" class="prev common-sprite ie6fixpic" href="javascript:void(0);">上一张</a> 
+    	<a id="JS-banner_next" class="next common-sprite ie6fixpic" href="javascript:void(0);">下一张</a> 
+    </div>
+    <{/if}>
+    
+  </div>
+  
+</div>
+<{/if}>
+<script type="text/javascript" src="<{$web_host}>/common/index/assets/slide.js"></script>
+<div class="site-focus">
+  <div class="wrap">
+    <div class="mod-title clearfix">
+      <h2> &nbsp;&nbsp;所有项目</h2>
+      <div class="title-sub"> 
+      	<{section name=tl loop=$typeList}>
+      	<a href="<{$web_app_url}>/act/Showall/type/<{$typeList[tl].code}>" title="<{$typeList[tl].name}>"><{$typeList[tl].name}></a> 
+      	<{/section}>
+      </div>
+    </div>
+  
+  </div>
+</div>
+<div class="main wrap">
+	<div class="hot-project-box"> 
+		<div class="hot-project">
+      		<ul class="clearfix">
+       			<{section name=al loop=$actList.list}>
+        		<li> 
+          		<div class="list-item"> 
+		          	<a class="item-figure" href="<{$web_app_url}>/act/detail/id/<{$actList.list[al].id}>" target="_blank"> 
+		          		<img src="<{$web_host}>/common/upload/images/<{$actList.list[al].pic_link}>" alt="<{$actList.list[al].biaoti}>"> 
+		          	</a>
+		            <div class="item-upvote"> 
+		            	<a class="icons <{if $actList.list[al].liked==1}>liked<{/if}>" href="javascript:void(0);" rel="<{$actList.list[al].zan}>" onclick="like_act(<{$actList.list[al].id}>, this)">
+		            		<{$actList.list[al].zan}>赞
+		            	</a> 
+		            </div>
+            		<h3><a href="<{$web_app_url}>/act/detail/id/<{$actList.list[al].id}>" target="_blank"><{$actList.list[al].biaoti}></a></h3>
+		            <div class="item-caption"> 
+		            	<span class="caption-title">负责人：<em><{$actList.list[al].fuzeren}></em></span> 
+		            	<{if $actList.list[al].wancheng==1}>
+		            	<span class="btn-base btn-red-h20 common-sprite"> 
+		            		<span class="common-sprite">
+		            		集赞中
+		            		</span> 
+		            	</span>
+		            	<{elseif $actList.list[al].wancheng==2}>
+		            	<span class="btn-base btn-blue-h20 common-sprite"> 
+		            		<span class="common-sprite">
+		            		已完成
+		            		</span> 
+		            	</span>
+		            	<{else}>
+		            	<span class="btn-base btn-gray-h20 common-sprite"> 
+		            		<span class="common-sprite">
+		            		已失败
+		            		</span> 
+		            	</span>
+		            	<{/if}> 
+		            </div>
+		            <div class="progress-bar"> 
+		            	<{if $actList.list[al].wancheng==1}>
+		            	<span class="progress bg-red" style="width:100%;"></span>
+		            	<{else}>
+		            	<span class="progress bg-gray" style="width:100%;"></span>
+		            	<{/if}>
+		            </div>
+		            
+		            <div class="item-rate clearfix"> 
+		            	<span class="rate1"> <em>￥<{$actList.list[al].zijin}></em><br>目标资金 </span> 
+		            	<span class="rate2"> <em><{$actList.list[al].zan}></em><br>已筹赞 </span> 
+		            	<span class="rate3"> <em><{$actList.list[al].shijian|date_format:"m-d"}></em><br>活动时间 </span> 
+		            </div>
+         		</div>
+       			</li>
+      			<{/section}>
+			</ul>
+	    	<div class="project-more">
+	      		<a class="more-btn" href="<{$web_app_url}>/act/Showall/" alt="查看更多项目" ,title="查看更多项目" >
+	     	 	查看更多项目
+	      		</a>
+	    	</div>
+    	</div>
+	</div>
+</div>
+
+<{include file="footer.html"}>
+</body>
+</html>

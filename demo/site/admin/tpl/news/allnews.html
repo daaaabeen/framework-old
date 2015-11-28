@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<LINK href="<{$web_host}>/common/admin/css/admin.css" type="text/css" rel="stylesheet">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title></title>
+<style type="text/css">
+<!--
+.sub-container{margin:10px;background-color:#E8F1FA;width:250px;height:100px; float:left;border-top:#F50 solid 2px;border-left:1px solid #CCC; border-right:1px solid #CCC; border-bottom:1px solid #CCC;}
+.sub-container:hover{background:#FCF1CA;}
+.sub-container-header{height:20px; width:250px; text-align: right; border-bottom:1px solid #CCC; }
+.sub-container-header a{line-height:20px; height: 20px;}
+.sub-container-item{height:110px; margin:10px; width:250px; text-align:left;}
+.sub-container-item-row{width:250px;height:20px;}
+.sub-container-nothing{margin:10px;}
+
+-->
+
+</style>
+</head>
+<body>
+<TABLE cellSpacing=0 cellPadding=0 width="100%" align=center border=0>
+  	<TR height=28><TD background="<{$web_host}>/common/admin/images/title_bg1.jpg">当前位置:新闻列表</TD></TR>
+  	<TR><TD bgColor=#b1ceef height=1></TD></TR>
+  	<TR height=20>
+    	<TD background="<{$web_host}>/common/admin/images/shadow_bg.jpg"></TD>
+	</TR>
+</TABLE>
+<div style="padding-left:30px;" >
+	<font color="#CC0000"><{$result|default:""}></font>
+</div>
+
+<div>
+
+<{section name=sub loop=$newslist.list}>
+
+	<div class="sub-container">
+		<div class="sub-container-header" >
+    		<a href="<{$web_host}>/index.php/news/detail/id/<{$newslist.list[sub].xw_id}>">查看</a>
+			&nbsp;&nbsp;
+			<a href="<{$web_app_url}>/news/editnews/id/<{$newslist.list[sub].xw_id}>">修改</a>
+			&nbsp;&nbsp;
+		   	<a onclick="return confirm('确认删除这条新闻吗？');" href="<{$web_app_url}>/news/getallnews/do/del/id/<{$newslist.list[sub].xw_id}>">删除</a>
+			&nbsp;&nbsp;
+		</div>
+		<div class="sub-container-item" >
+			<div class="sub-container-item-row">新闻标题:<{$newslist.list[sub].xw_biaoti|truncate:12}></div>
+			<div class="sub-container-item-row">发布时间:<{$newslist.list[sub].xw_shijian}></div>
+		</div>
+	</div>
+<{sectionelse}>
+	<div class="sub-container-nothing" >
+		还没有活动
+	</div>
+<{/section}>
+<div style="clear: both;"></div>
+<{page info=$newslist web_host=$web_host web_app_url=$web_app_url url="/news/getallnews"}>
+</div>
+</body>
+</html>

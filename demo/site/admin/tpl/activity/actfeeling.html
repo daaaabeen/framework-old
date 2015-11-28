@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+</head>
+<style>
+.verify{
+	cursor: pointer;
+	font-size: 11px;
+	line-height: 20px;
+	color: #000;
+	background: #DBEAF9;
+	border: 1px solid #CCC;
+	text-align: center;
+	width: 80px;
+	float: left;
+	margin: 20px;
+}
+.verify a{
+	text-decoration:none;
+	color: #000;
+}
+.actpic{
+	max-height:400px;
+	max-width:400px;
+	margin:10px;
+}
+</style>
+<body>
+<table width="100%" border="0" align="left" cellpadding="0" cellspacing="0">
+                              	  <tr>
+									<td width="107" height="30"><div align="right"></div></td>
+									<td height="40" colspan="2">
+										<div align="left"><font id="result" color="#0000FF"><{$result|default:""}></font></div>
+									</td>
+								  </tr>
+                                   
+                                  <tr>
+                                    <td width="107" height="30"><div align="right">活动标题：</div></td>
+                                    <td height="40" colspan="2">&nbsp;
+                                    <{$detail.biaoti}>
+                                    </td>
+                                  </tr>
+
+                                  <tr>
+                                    <td width="107" height="30"><div align="right">活动感言：</div></td>
+                                    <td height="40" colspan="2">&nbsp;
+                                    <{$detail.ganyan}>
+                                    </td>
+                                  </tr>
+                                  
+                                  <tr>
+                                    <td width="107" height="30"><div align="right">活动图片：</div></td>
+                                    <td height="40" colspan="2">&nbsp;
+                                    <{section name=piclist loop=$pic}>
+                                    	<img class="actpic" src="<{$web_host}>/common/upload/images/<{$pic[piclist].pic_link}>" />
+                                    <{/section}>
+                                    </td>
+                                  </tr>
+                                  
+                            </table>
+                            
+                             <div class="verify"><a href="<{$web_app_url}>/activity/actfeeling/do/appr/id/<{$detail.id}>">审核通过</a></div>
+							 <div class="verify"><a href="<{$web_app_url}>/activity/actfeeling/do/reje/id/<{$detail.id}>">审核失败</a></div>
+</body>
+</html>

@@ -1,0 +1,13 @@
+{
+    "name": "been/framework",
+    "description": "个简单易用的mvc框架",
+    "require": {
+        "php": ">5.3"
+    },
+    "authors": [
+        {
+            "name": "lidianbin",
+            "email": "dianbin.lee@gmail.com"
+        }
+    ]
+}

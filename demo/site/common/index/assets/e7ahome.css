@@ -1,0 +1,210 @@
+body {
+	background: #FFF;
+	background: url(./images/main-bg.jpg) repeat 50% 0;
+}
+.info-head {
+	padding: 50px 0px 0px;
+	
+	border-top: 1px solid #FFF;
+	border-bottom: 1px solid #dfdfdf;
+}
+.mod-head {
+	width: 100%;
+	padding: 0px 0px 40px;
+}
+.info-left {
+	width: 180px;
+	float: left;
+}
+.portrait {
+	width: 150px;
+	height: 150px;
+	position: relative;
+}
+.portrait img {
+	width: 150px;
+	height: 150px;
+	border-radius: 10px;
+	behavior: url(static/zhongchou/css/phoenix/PIE.htc);
+	position: relative;
+}
+.change-img {
+	position: absolute;
+	left: 0px;
+	bottom: 0px;
+}
+.change-img a {
+	padding: 0px 8px;
+	height: 18px;
+	line-height: 18px;
+	display: block;
+	background: #E8E8E8;
+	border: 1px solid #D9D9D9;
+	border-radius: 2px;
+	behavior: url(static/zhongchou/css/phoenix/PIE.htc);
+}
+.info-right {
+	float: left;
+	width: 550px;
+}
+.user-fun {
+	width: 100%;
+	height: 32px;
+}
+.user-fun h2 {
+	font-size: 24px;
+	line-height: 32px;
+	color: #000;
+	float: left;
+	padding-right: 10px;
+}
+.user-fun .btn-base {
+	margin: 6px 0px;
+	color: #FFF;
+}
+.user-fun .btn-base span {
+	padding: 0px 8px 0px 2px;
+	margin-right: 8px;
+}
+.icon-set, .icon-msg, .icon-info {
+	width: 16px;
+	height: 16px;
+	line-height: 0px;
+	font-size: 0px;
+	display: inline-block;
+	vertical-align: middle;
+	_margin-top: 3px;
+}
+.icon-set {
+	background-position: -45px -75px;
+}
+.icon-msg {
+	background-position: -60px -75px;
+}
+.icon-info {
+	background-position: -104px -119px;
+}
+.user-info {
+	padding: 10px 0px 0px;
+}
+.content-tab {
+	width: 638px;
+	margin: 0 auto;
+	border-right: 1px solid #dfdfdf;
+	position: relative;
+	bottom: -1px;
+}
+.content-tab ul li {
+	width: 318px;
+	text-align: center;
+	height: 48px;
+	background: #e8e8e8;
+	border-top: 1px solid #dfdfdf;
+	border-left: 1px solid #dfdfdf;
+	border-bottom: 1px solid #dfdfdf;
+	float: left;
+}
+.content-tab ul li.select {
+	border-top: 1px solid #ed5e58;
+	background: #FFF;
+	margin-bottom: 0px;
+	border-bottom: 1px solid #FFF;
+}
+.content-tab ul li a {
+	width: 100%;
+	height: 46px;
+	line-height: 46px;
+	border-top: 2px solid #e8e8e8;
+	display: block;
+	font-size: 16px;
+}
+.content-tab ul li.select a {
+	color: rgb(126,12,110);
+	border-top: 2px solid rgb(126,12,110);
+}
+.content-tab ul li a .btn-base {
+	vertical-align: -4px;
+	_vertical-align: 0px;
+	font-size: 12px;
+	line-height: 20px;
+	_margin: 12px 0px 0px;
+}
+.content-tab ul li a:hover {
+	color: rgb(126,12,110);
+}
+.products {
+	background: #FFF;
+	padding: 20px 0px;
+	min-height: 410px;
+	_height: 410px;
+}
+.urtag {
+	padding: 5px 30px;
+}
+.urtag .btn-base {
+	margin-right: 3px;
+}
+.urtag .btn-base span {
+	padding: 0px 10px 0px 5px;
+}
+.urtag .btn-base:hover, .urtag .select {
+	background-position: -223px 0;
+}
+.urtag .btn-base:hover span, .urtag .select span {
+	background-position: 100% -263px;
+}
+.products-list {
+	width: 100%;
+}
+.products-list th, .products-list td {
+	padding: 15px 0px;
+	border-bottom: 1px solid #ececec;
+	vertical-align: middle;
+}
+.products-list thead th, .products-list thead td {
+	height: 22px;
+}
+.products-list table th {
+	padding-left: 30px;
+}
+.products-list table thead th, .products-list table thead td {
+	font-weight: bold;
+}
+.products-list table td {
+	text-align: center;
+}
+.project-img {
+	float: left;
+}
+.project-img img {
+	width: 60px;
+	height: 43px;
+	border-radius: 5px;
+	behavior: url(static/zhongchou/css/phoenix/PIE.htc);
+	position: relative;
+}
+.project-tit {
+	
+	word-break: break-all;
+	word-wrap: break-word;
+}
+.page {
+	padding: 10px 20px;
+}
+.products-list table td a {
+	color: #ED5E58;
+	margin: 0px 3px;
+}
+.products-list table td a:hover {
+	color: #ED5E58;
+}
+.products-item {
+	width: 960px;
+}
+.products-item ul {
+	width: 980px;
+}
+.products-item ul li {
+	padding: 0px 20px 20px 0px;
+	float: left;
+}

@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<LINK href="<{$web_host}>/common/admin/css/admin.css" type="text/css" rel="stylesheet">
+</head>
+
+<body>
+<TABLE cellSpacing=0 cellPadding=0 width="100%" align=center border=0>
+  	<TR height=28><TD background="<{$web_host}>/common/admin/images/title_bg1.jpg">当前位置:修改密码</TD></TR>
+  	<TR><TD bgColor=#b1ceef height=1></TD></TR>
+  	<TR height=20>
+    	<TD background="<{$web_host}>/common/admin/images/shadow_bg.jpg"></TD>
+	</TR>
+</TABLE>
+<div id="info" style=" margin-left:10px;">
+<form id="form1" target="_self" name="form1" method="post" action="<{$web_app_url}>/account/changepw">
+  <p>
+  <label>旧密码：
+  <input type="password" name="old" />
+  </label>
+  </p>
+  <br />
+  <p>
+    <label>新密码：
+    <input type="password" name="new" />
+    </label>
+  </p>
+  <br />
+  <p>
+    <label>第二遍：
+    <input type="password" name="renew" />
+    </label>
+  </p>
+    <br />
+  <p>
+    <label>
+    <input type="submit" name="Submit" value="提交" />
+	<font color="#CC0000"><{$result|default:""}></font>
+    </label>
+  </p>
+</form>
+</div>
+</body>
+</html>

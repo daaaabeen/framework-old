@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<title>南开集赞网</title>
+<meta name="keywords" content="南开 集赞 创业 项目 投资 支持">
+<meta name="description" content="在南开集赞网发布活动或项目，获得投资支持，实现你的梦想">
+<link rel="bookmark" type="image/x-icon" href="#">
+<!--各种图标，多个设备支持-->
+<link rel="shortcut icon" type="image/png" href="#">
+<link rel="icon" type="image/png" href="#">
+<link rel="apple-touch-icon" href="#">
+<!--public js&css start-->
+<!--public js&css end -->
+<script type="text/javascript" src="<{$web_host}>/common/index/assets/jqueryv182.js"></script>
+<script type="text/javascript" src="<{$web_host}>/common/index/assets/slide.js"></script>
+<script type="text/javascript">var web_host = "<{$web_host}>"</script>
+<link rel="stylesheet" type="text/css" href="<{$web_host}>/common/index/assets/style2.css">
+</head>
+
+<body>
+<{include file="header.html"}>
+<link rel="stylesheet" type="text/css" href="<{$web_host}>/common/index/assets/5dcabout.css">
+
+
+<div class="main clearfix">
+	<div class="wrap">
+		<div class="about-content clearfix">
+			<div class="menu-nav">
+				<ul class="clearfix">
+					<li class="select"><a class="service icon-ast" href="<{$web_app_url}>/news">集赞公告</a></li>
+					<!-- 
+					<li ><a class="about icon-ast" href="#">关于南开集赞网</a></li>
+					<li ><a class="contact icon-ast" href="#">联系我们</a></li>
+					<li ><a class="service icon-ast" href="#">项目发起规范</a></li>
+					 -->
+				</ul>
+			</div>
+			<div class="maincontent">
+				<div class="tit-wrap" style="height:40px;">
+					<h3><{$detail.xw_biaoti}></h3>
+					<{$detail.xw_shijian}>
+				</div>
+				<div class="content-box">
+					<div class="con-list"></div>	
+                    <li><{$detail.xw_neirong}></li>
+                    <br />
+                    <{if $detail.file_id != ""}>
+                    <li>附件：<a href="<{$web_host}>/common/upload/files/<{$detail.file_link}>"><{$detail.file_name}></a></li>
+                    <{/if}>
+                    </div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<{include file="footer.html"}>
+</body>
+</html>

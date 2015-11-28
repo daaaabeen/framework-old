@@ -1,0 +1,40 @@
+<{if $news.page == "1"}>
+	&nbsp;<a class="select common-sprite">1</a>
+<{else}>
+	<a class="prev" href="<{$url}>/page/<{$news.page-1}>">上一页</a>
+	&nbsp;<a class="common-sprite" href="<{$url}>/page/1">&nbsp;1&nbsp;</a>
+	<{if $news.page-1 > 5 }>
+	<{for $foo=2 to 3 }>
+     	&nbsp;<a class="common-sprite" href="<{$url}>/page/<{$foo}>">&nbsp;<{$foo}>&nbsp;</a>
+    <{/for}>
+     	<a class="common-sprite" href="#">. . .</a> 	
+    <{for $foo=$news.page-2 to $news.page-1 }>
+     	&nbsp;<a class="common-sprite" href="<{$url}>/page/<{$foo}>">&nbsp;<{$foo}>&nbsp;</a>
+    <{/for}>
+	<{else}>
+    <{for $foo=2 to $news.page-1 }>
+     	&nbsp;<a class="common-sprite" href="<{$url}>/page/<{$foo}>">&nbsp;<{$foo}>&nbsp;</a>	    
+    <{/for}>
+     			
+	<{/if}>
+	&nbsp;<a class="select common-sprite"><{$news.page}></a>
+<{/if}>
+    		
+<{if $news.page != $news.totalPage}>
+    <{if $news.totalPage - $news.page > 5 }>
+    	<{for $foo=$news.page+1 to $news.page+2 }>
+     	&nbsp;<a class="common-sprite" href="<{$url}>/page/<{$foo}>">&nbsp;<{$foo}>&nbsp;</a>	    
+     	<{/for}>
+     	<a class="common-sprite" href="#">. . .</a> 
+     	
+     	<{for $foo=$news.totalPage-2 to $news.totalPage-1 }>
+     	&nbsp;<a class="common-sprite" href="<{$url}>/page/<{$foo}>">&nbsp;<{$foo}>&nbsp;</a>    
+     	<{/for}>
+     <{else}>
+     <{for $foo=$news.page+1 to $news.totalPage-1 }>
+     	&nbsp;<a class="common-sprite" href="<{$url}>/page/<{$foo}>">&nbsp;<{$foo}>&nbsp;</a>	    
+     <{/for}>
+	<{/if}>
+	<a class="common-sprite" href="<{$url}>/page/<{$news.totalPage}>"><{$news.totalPage}></a> 
+	<a class="next" href="<{$url}>/page/<{$news.page+1}>">下一页</a>     		
+<{/if}>

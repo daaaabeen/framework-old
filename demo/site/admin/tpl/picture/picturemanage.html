@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<LINK href="<{$web_host}>/common/admin/css/admin.css" type="text/css" rel="stylesheet">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>首页大图管理</title>
+<style type="text/css">
+<!--
+.sub-container{margin:10px;background-color:#E8F1FA;width:450px;height:350px; float:left;border-top:#F50 solid 2px;border-left:1px solid #CCC; border-right:1px solid #CCC; border-bottom:1px solid #CCC;}
+.sub-container:hover{background:#FCF1CA;}
+.sub-container-header{height:20px; width:450px; text-align: right; border-bottom:1px solid #CCC; }
+.sub-container-header a{line-height:20px; height: 20px;}
+.sub-container-item{height:330px; margin:10px; width:430px; text-align:left;}
+.sub-container-item-row{width:430px;height:20px;text-align:center;}
+.sub-container-nothing{margin:10px;}
+
+-->
+
+</style>
+</head>
+<body>
+<TABLE cellSpacing=0 cellPadding=0 width="100%" align=center border=0>
+  	<TR height=28><TD background="<{$web_host}>/common/admin/images/title_bg1.jpg">当前位置:首页大图管理</TD></TR>
+  	<TR><TD bgColor=#b1ceef height=1></TD></TR>
+  	<TR height=20>
+    	<TD background="<{$web_host}>/common/admin/images/shadow_bg.jpg"></TD>
+	</TR>
+</TABLE>
+<div style="padding-left:30px;" >
+	<font color="#CC0000"><{$result|default:""}></font>
+</div>
+<div>
+
+<{section name=sub loop=$piclist}>
+
+	<div class="sub-container">
+		<div class="sub-container-header" >
+			<{if <{$piclist[sub].picstate == 1}> }>
+			<a href="<{$web_app_url}>/picture/picturemanage/do/disable/id/<{$piclist[sub].fp_id}>">取消显示</a>
+			<{else}>
+			<a href="<{$web_app_url}>/picture/picturemanage/do/enable/id/<{$piclist[sub].fp_id}>">首页显示</a>
+			<{/if}>
+			&nbsp;&nbsp;
+			<a onclick="return confirm('确认删除这张大图吗？');" href="<{$web_app_url}>/picture/picturemanage/do/del/id/<{$piclist[sub].fp_id}>">删除</a>
+		</div>
+		<div class="sub-container-item" >
+			<div class="sub-container-item-row"><img style="max-height:310px;max-width:410px" src="<{$web_host}>/common/upload/images/<{$piclist[sub].pic_link}>"   /></div>
+		</div>
+		
+	</div>
+<{sectionelse}>
+	<div class="sub-container-nothing" >
+		还没有大图
+	</div>
+<{/section}>
+<div style="clear: both;"></div>
+</div>
+</body>
+</html>

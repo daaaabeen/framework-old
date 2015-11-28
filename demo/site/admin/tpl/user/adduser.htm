@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<LINK href="<{$web_host}>/common/admin/css/admin.css" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="<{$web_host}>/common/libs/jquery-1.9.1.js"></script>
+<script type="text/javascript">
+	$(function() {
+		$("#form1").submit( function () {
+			$("#result").val("");
+			
+			if( ($("#phone").val() == "") && ($("#email").val() == "") ){
+				$("#phone").focus();
+				$("#result").text("手机号和邮箱号至少有一个！");
+				return false;
+			}
+			if($("#pw").val() == ""){
+				$("#pw").focus();
+				$("#result").text("密码不能为空！");
+				return false;
+			}
+			if($("#pw").val() != $("#repw").val()){
+				$("#pw").focus();
+				$("#result").text("两次密码不一致！");
+				return false;
+			}
+			//alert($("#newssort").val());
+			if($("#realname").val() == ""){
+				$("#realname").focus();
+				$("#result").text("真实姓名不能为空！");
+				return false;
+			}
+			
+			
+			if($("#role").val()==""){
+				$("#role").focus();
+				$("#result").text("请选择用户角色！");
+				return false;
+			}
+			return true;
+		} );		
+	});
+	
+	$(window).keydown(function(event){
+		if(event.ctrlKey && event.which == 13) {
+			//alert("aa"); 
+			$("#form1").submit();
+		}
+	});
+</script>
+</head>
+
+<body>
+<TABLE cellSpacing=0 cellPadding=0 width="100%" align=center border=0>
+  	<TR height=28><TD background="<{$web_host}>/common/admin/images/title_bg1.jpg">当前位置:添加用户</TD></TR>
+  	<TR><TD bgColor=#b1ceef height=1></TD></TR>
+  	<TR height=20>
+    	<TD background="<{$web_app_url}>/common/admin/images/shadow_bg.jpg"></TD>
+	</TR>
+</TABLE>
+<div id="info" style=" margin-left:10px;">
+<form id="form1" target="_self" name="form1" method="post" action="">
+  <p>
+  	<label>
+  		手机号码：<input type="text" name="phone" id="phone" style="width:200px" value="<{$phone|default:""}>" />
+  	</label>
+  </p>
+  <br />
+  <p>
+  	<label>
+  		邮箱地址：<input type="text" name="email" id="email" style="width:200px" value="<{$email|default:""}>" />*手机号邮箱二选一作为登录账号使用
+  	</label>
+  </p>
+  <br />
+   
+  <p>
+    <label>用户密码：<input type="password" name="pw" id="pw" style="width:150px" />*必填
+    </label>
+  </p>
+  <br />
+  <p>
+    <label>确认密码：<input type="password" name="repw" id="repw" style="width:150px" />*必填
+    </label>
+  </p>
+    <br />
+  <p>
+  
+  <p>
+  <label>真实姓名：<input type="text" name="realname" id="realname" style="width:150px" value="<{$realname|default:""}>"  />*必填
+  </label>
+  </p>
+  <br />
+    <label>用户角色：<select  name="role" id="role" style="width:150px">
+			<option value="" <{if !isset($role) }> selected="selected" <{/if}> >选择用户角色</option>
+			<{section name=r loop=$role}>			 
+	    	<option value="<{$role[r].role_id}>" <{if $role == $role[r].role_id }> selected="selected"<{/if}>  ><{$role[r].role_name}></option>
+	  		<{/section}>
+		</select>*必填
+    </label>
+  </p>
+    <br />
+     <p>
+    <label>
+    <input type="submit" name="Submit" value="提交" />
+	<font id="result" color="#CC0000"><{$result|default:""}></font>
+    </label>
+  </p>
+  <br />
+  
+</form>
+</div>
+</body>
+</html>

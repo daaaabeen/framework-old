@@ -1,0 +1,49 @@
+<LINK href="<{$web_host}>/common/admin/css/page.css" type="text/css" rel="stylesheet">
+<div id="Paging">
+	<div class="paging_show">
+		<ul>
+    		<{if $news.page == "1"}>
+    		<li class="Paging_now">1</li>
+    		<{else}>
+    		<li class="Paging_pre"><a href="<{$url}>/page/<{$news.page-1}>">&nbsp;</a></li>
+    		<li class="Paging_btn"><a href="<{$url}>/page/1">1</a></li>
+     		<{if $news.page-1 > 5 }>
+     			<{for $foo=2 to 3 }>
+     	<li class="Paging_btn"><a href="<{$url}>/page/<{$foo}>"><{$foo}></a></li>	    
+     			<{/for}>
+     	<li class="Paging_dot"><img src="<{$web_host}>/common/admin/images/point.png" alt="point" /></li>
+     			<{for $foo=$news.page-2 to $news.page-1 }>
+     	<li class="Paging_btn"><a href="<{$url}>/page/<{$foo}>"><{$foo}></a></li>	    
+     			<{/for}>
+     		<{else}>
+     			<{for $foo=2 to $news.page-1 }>
+     	<li class="Paging_btn"><a href="<{$url}>/page/<{$foo}>"><{$foo}></a></li>	    
+     			<{/for}>
+     			
+     		<{/if}>
+     	<li class="Paging_now"><{$news.page}></li>
+    		<{/if}>
+    		
+    		<{if $news.page != $news.totalPage}>
+    			<{if $news.totalPage - $news.page > 5 }>
+    				<{for $foo=$news.page+1 to $news.page+2 }>
+     	<li class="Paging_btn"><a href="<{$url}>/page/<{$foo}>"><{$foo}></a></li>	    
+     			<{/for}>
+     			<li class="Paging_dot"><img src="<{$web_host}>/common/admin/images/point.png" alt="point" /></li>
+     			<{for $foo=$news.totalPage-2 to $news.totalPage-1 }>
+     	<li class="Paging_btn"><a href="<{$url}>/page/<{$foo}>"><{$foo}></a></li>	    
+     			<{/for}>
+     		<{else}>
+     			<{for $foo=$news.page+1 to $news.totalPage-1 }>
+     	<li class="Paging_btn"><a href="<{$url}>/page/<{$foo}>"><{$foo}></a></li>	    
+     			<{/for}>
+    			<{/if}>
+    		<li class="Paging_btn"><a href="<{$url}>/page/<{$news.totalPage}>"><{$news.totalPage}></a></li>	
+    		<li class="Paging_next"><a href="<{$url}>/page/<{$news.page+1}>">&nbsp;</a></li>
+    		
+    		
+    		<{/if}>
+        	
+    	</ul>
+	</div>    
+</div>

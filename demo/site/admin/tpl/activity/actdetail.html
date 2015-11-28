@@ -1,0 +1,194 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>活动详情</title>
+<LINK href="<{$web_host}>/common/admin/css/admin.css" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="<{$web_host}>/common/libs/jquery-1.9.1.js"></script>
+</head>
+<style type="text/css">/* CSS Document */   
+#info th {  
+ border-right: 1px solid #adceff;  
+ border-bottom: 1px solid #adceff;  
+ border-top: 1px solid #adceff;  
+ letter-spacing: 2px;  
+ text-transform: uppercase;  
+ text-align: left;  
+ padding: 6px 6px 6px 12px;  
+ background: #f4f7fc;  
+}  
+#info td {  
+ border-right: 1px solid #adceff;  
+ border-bottom: 1px solid #adceff;  
+ background: #fff;  
+ font-size:11px;  
+ padding: 6px 6px 6px 12px;  
+ 
+}  
+#info th.spec {  
+ border-left: 1px solid #adceff;  
+ border-top: 0;  
+ background: #fff;   
+}  
+.verify{
+	cursor: pointer;
+	font-size: 11px;
+	line-height: 20px;
+	color: #000;
+	background: #DBEAF9;
+	border: 1px solid #CCC;
+	text-align: center;
+	width: 80px;
+	float: left;
+	margin: 20px;
+}
+.verify a{
+	text-decoration:none;
+	color: #000;
+}
+.actpic{
+	max-height:400px;
+	max-width:400px;
+	margin:10px;
+}
+</style>  
+<body>
+<TABLE cellSpacing=0 cellPadding=0 width="100%" align=center border=0>
+  	<TR height=28><TD background="<{$web_host}>/common/admin/images/title_bg1.jpg">当前位置:查看并审核活动</TD></TR>
+  	<TR><TD bgColor=#b1ceef height=1></TD></TR>
+  	<TR height=20>
+    	<TD background="<{$web_host}>/common/admin/images/shadow_bg.jpg"></TD>
+	</TR>
+</TABLE>
+
+<div id="stat" style="margin-left:20px;">
+	<font color="#CC0000" id="result"><{$result|default:""}></font>
+</div>
+
+
+&nbsp;&nbsp;&nbsp;<a href="<{$web_app_url}>/activity/comment/id/<{<{$detail.id}>}>">>查看评论</a>
+<br/><br/>
+<table width="100%" border="0" align="left" cellpadding="0" cellspacing="0">
+                                   
+	<tr>
+	  <td width="80" height="30"><div align="right">活动标题：</div></td>
+	  <td  colspan="2">&nbsp;
+	  <{$detail.biaoti}>
+	  </td>
+	</tr>
+                          
+    <tr>
+      <td width="80" height="30"><div align="right">负责人：</div></td>
+      <td  colspan="2">&nbsp;
+      <{$detail.fuzeren}>
+      </td>
+    </tr>
+                         
+                         
+  <tr>
+    <td width="80" height="30"><div align="right">学号：</div></td>
+    <td  colspan="2">&nbsp;
+    <{$detail.xuehao}>
+    </td>
+  </tr>
+                          
+	<tr>
+      <td width="80" height="30"><div align="right">电话：</div></td>
+      <td  colspan="2">&nbsp;
+      <{$detail.dianhua}>
+      </td>
+    </tr>
+      
+	<tr>
+    <td width="80" height="30" ><div align="right">活动内容：</div></td>
+    <td colspan="2">&nbsp;
+    <{$detail.neirong}>
+    </td>
+  </tr>
+       
+<tr>
+    <td width="80" height="30"><div align="right">活动意义：</div></td>
+    <td  colspan="2">&nbsp;
+    <{$detail.yiyi}>
+    </td>
+  </tr>
+<{if $detail.pic_link}>
+ <tr>
+    <td width="80"><div align="right">活动海报：</div></td>
+    <td colspan="2">&nbsp;
+    <img style="max-height:200px;max-width:200px;" src="<{$web_host}>/common/upload/images/<{$detail.pic_link}>" />
+     </td>
+   </tr>
+  <{/if}>
+                         
+	<tr>
+	   <td width="80" height="30"><div align="right">活动资金：</div></td>
+	   <td  colspan="2">&nbsp;
+	   <{$detail.zijin}>
+	   </td>
+	 </tr>
+                           
+     <tr>
+       <td width="80" height="30"><div align="right">活动时间：</div></td>
+       <td  colspan="2">&nbsp;
+       <{$detail.shijian}>
+       </td>
+     </tr>
+                           
+     <tr>
+       <td width="80" height="30"><div align="right">活动地点：</div></td>
+       <td  colspan="2">&nbsp;
+       <{$detail.didian}>
+       </td>
+     </tr>
+                           
+     <tr>
+       <td width="80" height="30"><div align="right">审核状态：</div></td>
+       <td  colspan="2">&nbsp;
+       <{if $detail.shenhe == 1}>
+       	未审核
+       <{else if $detail.shenhe == 2}>
+       	审核已通过
+       <{else if $detail.shenhe == 3}>
+       	审核未通过 
+       <{/if}>
+       
+       </td>
+     </tr>
+     
+     <tr>
+       <td width="80" height="30"><div align="right">发布人：</div></td>
+       <td  colspan="2">&nbsp;
+       <{$detail.user_name}>
+       </td>
+     </tr>
+     
+     <{if $detail.ganyan_state == 2}>
+     <tr>
+       <td width="80" height="30" ><div align="right">活动感言：</div></td>
+       <td  colspan="2">&nbsp;
+       <{$detail.ganyan}>
+       </td>
+     </tr>
+                           
+         <tr>
+           <td width="80" height="30" ><div align="right">活动图片：</div></td>
+           <td  colspan="2">&nbsp;
+           <{section name=piclist loop=$pic}>
+           	<img class="actpic" src="<{$web_host}>/common/upload/images/<{$pic[piclist].pic_link}>" />
+           <{/section}>
+           </td>
+         </tr>
+         
+         
+         <{/if}>
+         
+   </table>
+   <{if $detail.wancheng == 1 && $detail.shenhe !=  2}>
+    <div class="verify"><a href="<{$web_app_url}>/activity/actdetail/do/appr/id/<{$detail.id}>">审核通过</a></div>
+   <{/if}>
+   <{if $detail.wancheng == 1 && $detail.shenhe !=  3}>
+ <div class="verify"><a href="<{$web_app_url}>/activity/actdetail/do/reje/id/<{$detail.id}>">审核失败</a></div>
+<{/if}>
+</body>
+</html>

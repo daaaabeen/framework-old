@@ -1,0 +1,298 @@
+/*banner*/.banner {
+	width: 100%;
+	padding: 50px 0px 30px;
+	background-image: url(./images/main-bg3.jpg);
+	background-repeat: repeat;
+	background-position: 50% 0;
+}
+.banner .wrap {
+	position: relative;
+	z-index: 2;
+}
+.banner ul li, .banner ul li img {
+	width: 960px;
+	height: 392px;
+	border-radius: 8px;
+	position: relative;
+	behavior: url(static/css/phoenix/PIE.htc);
+}
+.focus-btn {
+	padding: 10px 0 0;
+}
+.focus-btn a {
+	width: 30px;
+	height: 52px;
+	display: block;
+	position: absolute;
+	top: 50%;
+	margin-top: -26px;
+	background-repeat: no-repeat;
+	text-indent: -9999px;
+}
+.focus-btn .prev {
+	background-position: -1px -19px;
+	left: -60px;
+}
+.focus-btn .next {
+	background-position: -34px -19px;
+	right: -60px;
+}
+.focus-btn .prev:hover {
+	background-position: -158px -32px;
+}
+.focus-btn .next:hover {
+	background-position: -158px -89px;
+}/*site focus*/
+.site-focus {
+	width: 100%;
+	padding: 20px 0px;
+	background: rgb(243,240,255);
+	border-top: 1px solid #FFF;
+	border-bottom: 1px solid #FFF;
+}
+.focus-box {
+	padding: 10px 0px 0px;
+	width: 960px;
+	position: relative;
+	overflow: hidden;
+}
+.focus-con {
+	min-width: 980px;
+	_width: 980px;
+}
+.focus-con li {
+	float: left;
+	padding: 0px 20px 10px 0px;
+}
+.focus-btn {
+	width: 100%;
+	text-align: center;
+	font-size: 0px;
+	line-height: 0px;
+}
+.focus-btn li {
+	display: inline-block;
+*display: inline;
+	zoom: 1;
+	padding: 0px 5px;
+}
+.focus-btn li span {
+	width: 16px;
+	height: 16px;
+	text-indent: -9999px;
+	display: block;
+	background-position: -43px 0px;
+	cursor: pointer;
+}
+.focus-btn li.select span, .focus-btn li:hover span {
+	background-position: -21px 0px;
+}
+.focus-btn li.prev span {
+	background-position: -114px -75px;
+}
+.focus-btn li.next span {
+	background-position: -130px -75px;
+}
+.focus-btn li.prev:hover span {
+	background-position: -82px -75px;
+}
+.focus-btn li.next:hover span {
+	background-position: -98px -75px;
+}/*hot-project*/
+.hot-project-box {
+	padding: 20px 0px;
+}
+.hot-project {
+	padding-top: 10px;
+}
+.hot-project ul {
+	min-width: 980px;
+	_width: 980px;
+}
+.hot-project ul li {
+	float: left;
+	padding: 0px 20px 20px 0px;
+}
+.project-more {
+	width: 100%;
+}
+.more-btn {
+	width: 256px;
+	height: 60px;
+	font-size: 20px;
+	text-align: center;
+	color: rgb(169, 143, 172);
+	line-height: 60px;
+	display: block;
+	border: 1px solid rgb(169, 143, 172);
+	background: #FFF;
+	margin: 15px auto;
+}
+.more-btn:hover {
+	background: rgb(169, 143, 172);
+	color: #FFF;
+}/*site-recom*/
+.site-recom {
+	width: 100%;
+	padding: 20px 0px;
+	background: #F3F3F3;
+	border-top: 1px solid #FFF;
+}
+.recom-con {
+	padding: 10px 0px 0px;
+	overflow: hidden;
+}
+.recom-con ul {
+	width: 980px;
+}
+.recom-con ul li {
+	padding: 0px 20px 20px 0px;
+	float: left;
+}
+.recom-con ul li a {
+	width: 120px;
+	height: 120px;
+	overflow: hidden;
+	display: block;
+	position: relative;
+	border-radius: 5px;
+	behavior: url(static/zhongchou/css/phoenix/PIE.htc);
+}
+.recom-con ul li a img {
+	height: 120px;
+	width: 120px;
+	border-radius: 5px;
+	position: relative;
+	behavior: url(static/zhongchou/css/phoenix/PIE.htc);
+}
+.recom-con ul li a span {
+	width: 86px;
+	height: 86px;
+	color: #FFF;
+	font-size: 14px;
+	padding: 12px;
+	position: absolute;
+	left: 5px;
+	top: 5px;
+	background: #e1605b;
+	filter: alpha(opacity=90);
+	-moz-opacity: 0.9;
+	-khtml-opacity: 0.9;
+	opacity: 0.9;
+}
+.recom-con ul li.recom-more a {
+	background: #e1605b;
+}
+.recom-more a i {
+	width: 38px;
+	height: 70px;
+	display: block;
+	background-position: -70px 0px;
+	position: absolute;
+	left: 45px;
+	top: 15px;
+}
+.recom-con ul li.recom-more a span {
+	width: auto;
+	height: 22px;
+	text-align: right;
+	font-size: 18px;
+	line-height: 22px;
+	margin: 0px;
+	padding: 0px;
+	background: none;
+	top: auto;
+	left: auto;
+	right: 10px;
+	bottom: 10px;
+}/*support*/
+.support {
+	width: 100%;
+	padding: 40px 0 40px;
+	background: #F8F8F8;
+	border-top: 1px solid #FFFFFF;
+}
+.support .mod-title {
+	padding-bottom: 15px;
+}
+.site-recom .mod-title {
+	padding-bottom: 10px;
+}
+.support-con ul li {
+	float: left;
+	line-height: 26px;
+}
+.support-con ul {
+	float: left;
+}
+.support-big li {
+	width: 320px;
+	text-align: center;
+}
+.support-big .icon-sup {
+	width: 50px;
+	height: 90px;
+	display: inline-block;
+}
+.support-big h3 {
+	font-size: 32px;
+	line-height: 36px;
+	color: rgb(169, 143, 172);
+}
+.support-big h3 em {
+	font-size: 20px;
+}
+.support-big p {
+	font-size: 14px;
+}
+.support-sm {
+	width: 225px;
+	padding-left: 45px;
+	border-left: 1px dashed #CCC;
+}
+.support-sm li {
+	width: 100%;
+	padding-bottom: 10px;
+}
+.support-sm .icon-sup {
+	width: 48px;
+	height: 48px;
+	display: block;
+	float: left;
+	margin-top: 1px;
+}
+.support-sm h3 {
+	font-size: 12px;
+	line-height: 18px;
+	margin-left: 55px;
+}
+.support-sm p {
+	font-size: 24px;
+	margin-left: 55px;
+	line-height: 26px;
+}
+.support-sm p em {
+	font-size: 16px;
+}
+.support-con .icon-sup {
+	background-image: url(./images/icon-support.png);
+	background-repeat: no-repeat;
+}
+.sup-sum {
+	background-position: -2px 0;
+}
+.sup-time {
+	background-position: -98px 0;
+}
+.sup-per {
+	background-position: -196px 0;
+}
+.pro-sum {
+	background-position: -72px -104px;
+}
+.pro-per {
+	background-position: -129px -104px;
+}
+.pro-money {
+	background-position: -12px -104px;
+}

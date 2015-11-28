@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<LINK href="<{$web_host}>/common/admin/css/admin.css" type="text/css" rel="stylesheet">
+</head>
+<style type="text/css">/* CSS Document */   
+#info th {  
+ border-right: 1px solid #adceff;  
+ border-bottom: 1px solid #adceff;  
+ border-top: 1px solid #adceff;  
+ letter-spacing: 2px;  
+ text-transform: uppercase;  
+ text-align: left;  
+ padding: 6px 6px 6px 12px;  
+ background: #f4f7fc;  
+}  
+#info td {  
+ border-right: 1px solid #adceff;  
+ border-bottom: 1px solid #adceff;  
+ background: #fff;  
+ font-size:11px;  
+ padding: 6px 6px 6px 12px;  
+ 
+}  
+#info th.spec {  
+ border-left: 1px solid #adceff;  
+ border-top: 0;  
+ background: #fff;   
+}  
+</style>  
+<body>
+<TABLE cellSpacing=0 cellPadding=0 width="100%" align=center border=0>
+  	<TR height=28><TD background="<{$web_host}>/common/admin/images/title_bg1.jpg">当前位置:角色管理</TD></TR>
+  	<TR><TD bgColor=#b1ceef height=1></TD></TR>
+  	<TR height=20>
+    	<TD background="<{$web_host}>/common/admin/images/shadow_bg.jpg"></TD>
+	</TR>
+</TABLE>
+
+<div id="info" style=" margin-left:10px;">
+<font color="#CC0000"><{$result|default:""}></font>
+<table id="mytable" cellspacing="0" >  
+  <tr>  
+    <th scope="col" width="50px" style="border-left:1px solid #adceff;" >角色id</th>  
+    <th scope="col" width="100px" >用户名</th> 
+    <th scope="col" width="50px" >用户类型</th> 
+    <th scope="col" width="400px" >可用权限</th>   
+    <th scope="col" width="250px" >操作</th>
+  </tr>  
+  <{section name=rl loop=$rolelist}>
+  <tr >  
+   	
+    <td style="border-left:1px solid #adceff;" ><{$rolelist[rl].role_id}></td>
+    <td><{$rolelist[rl].role_name}></td>
+    <td>
+    	<{if $rolelist[rl].role_type == 1}>
+    		后台
+    	<{else}>
+    		前台
+    	<{/if}>
+    </td>
+    <td>
+    	<{foreach $rolelist[rl].res as $res }>
+    	<{$res.ctrl_name}>[<{$res.ctrl_class}>]&nbsp;&nbsp;
+    	<{/foreach}>
+    </td>
+	<td>
+		<{if $rolelist[rl].role_id == 1}>
+		不能对此角色进行操作
+		<{else}>
+			<{if $rolelist[rl].role_type != 2 }>
+				&nbsp;&nbsp;
+					[<a onClick="return confirm('确认要删除角色：<{$rolelist[rl].role_name}>？');" href="<{$web_app_url}>/user/rolelist/do/del/id/<{$rolelist[rl].role_id}>">删除</a>]
+				&nbsp;&nbsp;
+					[<a href="<{$web_app_url}>/user/modifyrole/id/<{$rolelist[rl].role_id}>" >修改</a>]
+			<{else}>
+				&nbsp;&nbsp;不能管理前台用户权限
+			<{/if}>
+		<{/if}>
+	</td>
+  </tr>  
+  <{sectionelse}>
+  <tr >
+    <th class="spec" colspan="5">暂无用户！</td>
+  </tr>
+  <{/section}>
+</table>  
+</div>
+
+
+</body>
+</html>

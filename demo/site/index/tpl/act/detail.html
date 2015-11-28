@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<title>南开集赞网</title>
+<meta name="keywords" content="南开 集赞 创业 项目 投资 支持">
+<meta name="description" content="在南开集赞网发布活动或项目，获得投资支持，实现你的梦想">
+<link rel="bookmark" type="image/x-icon" href="#">
+<!--各种图标，多个设备支持-->
+<link rel="shortcut icon" type="image/png" href="#">
+<link rel="icon" type="image/png" href="#">
+<link rel="apple-touch-icon" href="#">
+<!--public js&css start-->
+<script type="text/javascript" src="<{$web_host}>/common/index/assets/jqueryv182.js"></script>
+<script type="text/javascript" src="<{$web_host}>/common/index/assets/slide.js"></script>
+<script type="text/javascript" src="<{$web_host}>/common/index/js/fun.js"></script>
+<script type="text/javascript">var web_host = "<{$web_host}>"</script>
+<link rel="stylesheet" type="text/css" href="<{$web_host}>/common/index/assets/style2.css">
+<link rel="stylesheet" type="text/css" href="<{$web_host}>/common/index/assets/deal-show1.css">
+
+
+</head>
+
+<body>
+
+<{include file="header.html"}>
+
+<!--main static-->
+<style> 
+.deal_bg {background-image : url("<{$web_host}>/common/index/assets/images/deal_background.jpg");padding-top:250px;}
+</style>
+<div class="main deal_bg">
+  <div class="wrap clearfix"> 
+    <!--content static-->
+    <div class="content fl"> 
+      <!--detail start-->
+      <div class="detail-box">
+        <div class="radius-hd">
+          <div class="radius-hl common-sprite"></div>
+          <div class="radius-hc w620"></div>
+          <div class="radius-hr common-sprite"></div>
+        </div>
+        <div class="radius-bd detail-con w628">
+          <div class="hd">
+          	<h1 class="word-break"><{$detail.biaoti}></h1>
+            <div class="author"> 
+            	<{$detail.fabushijian}><br/>
+            	<span class="author-lay common-sprite inline-block">发起人</span> 
+            	<span><a target="blank" href="http://www.renren.com/<{$detail.renren_id}>"><{$detail.user_name}></a></span> 
+            	<br/>
+ 
+            </div>
+          
+            
+            <div class="tit-bar clearfix">
+              <div class="title-nav fl">
+                <ul class="clearfix">
+                  <li class="select"> 
+                  	<a class="btn-base btn-nav common-sprite" href="#"> 
+                  		<span class="common-sprite">项目简介</span> 
+                  	</a> 
+                  </li>
+                  <li></li>
+                  <li></li>
+                </ul>
+              </div>
+              <link rel="jiathis" type="text/css" href="<{$web_host}>/common/index/assets/jiathis.css">
+              <div class="share">
+                <div class="jiathis_style"> <a title="分享到新浪微博" class="jiathis_button_tsina"><span class="jiathis_txt jtico jtico_tsina"></span></a> <a title="分享到QQ空间" class="jiathis_button_qzone"><span class="jiathis_txt jtico jtico_qzone"></span></a> <a title="分享到微信" class="jiathis_button_weixin"><span class="jiathis_txt jtico jtico_weixin"></span></a> <a title="分享到腾讯微博" class="jiathis_button_tqq"><span class="jiathis_txt jtico jtico_tqq"></span></a> <a title="分享到QQ好友" class="jiathis_button_cqq"><span class="jiathis_txt jtico jtico_cqq"></span></a> <a title="分享到豆瓣" class="jiathis_button_douban"><span class="jiathis_txt jtico jtico_douban"></span></a> <a title="分享到人人网" class="jiathis_button_renren"><span class="jiathis_txt jtico jtico_renren"></span></a> <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a> </div>
+                <script type="text/javascript">
+               var jiathis_config={
+                   url:"<{$web_app_url}>/act/detail/id/<{$detail.id}>",
+                   summary:"<{$detail.zc_title}>",
+                   title:"#南开集赞网# 我在南开集赞网  关注了项目  #<{$detail.zc_title}># ",
+                   <{if $detail.pic_link !="" }>
+                   pic:"<{$web_host}>/common/upload/images/<{$detail.pic_link}>",
+                   <{/if}>
+                   hideMore:true
+               }
+           </script> 
+              </div>
+            </div>
+          </div>
+          <div class="bd">
+            <div class="article">
+              <p>
+              	<{if $detail.pic_link !="" }>
+                <img src="<{$web_host}>/common/upload/images/<{$detail.pic_link}>" alt="" border="0">
+                <{/if}>
+              	<br/>
+              	<span style="font-size:16px; display:block;color:rgb(126, 12, 110);">>活动内容</span>
+              	<{$detail.neirong}>
+              	<br/>
+              	<br/>
+              	
+              	<span style="font-size:16px; display:block;color:rgb(126, 12, 110);">>活动意义</span>
+              	<{$detail.yiyi}>
+              	<br/>
+              	<br/>
+              	
+              	<{if $detail.ganyan_state == 2}>
+              	<span style="font-size:16px; display:block;color:rgb(126, 12, 110);">>活动图片</span>
+              	<{section name=pl loop=$pic_list}>
+              	<img src="<{$web_host}>/common/upload/images/<{$pic_list[pl].pic_link}>" alt="" border="0"><br/>
+              	<{/section}>
+              	<br/>
+              	<span style="font-size:16px; display:block;color:rgb(126, 12, 110);">>活动感言</span>
+              	<{$detail.ganyan}>
+              	<br/>
+              	<br/>
+              	<{/if}>
+              	
+              	
+              </p>
+            </div>
+          </div>
+          <div class="comment com-pro">
+            <div class="flbq">
+              <div class="flei">
+              	分类：
+              	<a href="<{$web_app_url}>/act/showall/type/<{$detail.leibie}>">
+              		<span class="red"><{$detail.type_name}></span>
+              	</a> 
+              </div>
+              <div class="bqian"> 
+              </div>
+              <div class="fr">
+                <div class="bshare-custom">
+                	<a title="分享到微信" class="bshare-weixin"></a>
+                	<a title="分享到人人网" class="bshare-renren"></a>
+                	<a title="分享到新浪微博" class="bshare-sinaminiblog"></a>
+                	<a title="分享到QQ空间" class="bshare-qzone"></a>
+                	<a title="分享到腾讯微博" class="bshare-qqmb"></a>
+                	<a title="更多平台" class="bshare-more bshare-more-icon more-style-addthis"></a>
+                	<span class="BSHARE_COUNT bshare-share-count">0</span>
+                </div>
+                <script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/button.js#style=-1&amp;uuid=&amp;pophcol=3&amp;lang=zh"></script>
+                <a class="bshareDiv" onclick="javascript:return false;"></a>
+                <script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js"></script>
+              </div>
+            </div>
+            <div id="start-pinglun" style="padding:15px 0 0">
+              <ul class="cmtit">
+                <li class="pl">
+                	<a href="javascript:void(0)"> 
+                		<span id="comment_0_tip">评论( <{$commentList.total}> )</span> 
+                	</a>
+                </li>
+              </ul>
+            </div>
+			<{if $detail.wancheng == 1 || $detail.wancheng == 2}>
+            <div id="pinglun" class="tjpl"> 
+            	<a name="comment"></a>
+              <form name="comment_0_form" rel="0" class="comment_form" method="POST" action="<{$web_app_url}>/act/detail/id/<{$detail.id}>">
+                <div class="ren">
+                	<a href="javascript:void(0);">
+                		<{if isset($__USERINFO__)}>
+                		<img src="<{$__USERINFO__.user_avatar[0]->url}>" height="80" width="80">
+                		<{else}>
+                		<img src="<{$web_host}>/common/index/assets/noavatar_middle.gif" height="80" width="80">
+                		<{/if}>
+                	</a>
+                </div>
+                <div class="pln_r">
+                  <div class="kuang">
+                    <textarea name="content">发表评论</textarea>
+                    <input name="ajax" value="0" type="hidden">
+                    
+                    <ul class="bq">
+                      <li class="fb send_btn">
+                        <{if !isset($__USERINFO__)}>
+                        <div class="comment-content" style="font-size:12px;">
+                        	请登录后评论，立即 <a href="<{$web_app_url}>/account/login?redirect_uri=<{$web_app_url}>/act/detail/id/<{$detail.id}>" class="linkgreen">登录</a> 
+                        </div>
+                        <{else}>
+                        <input name="" value="添加评论" type="submit" class="btn-red2" onclick=""/>
+                      	<{/if}>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </form>
+            </div>
+			<{/if}>
+            <div class="deal_comment_list" id="deal_comment_list_0">
+              
+              <{section name=cl loop=$commentList.list}>
+               <!-- 评论item start -->
+              <div class="comment_item">
+                <div class="comment_user_avatar">
+                	<a href="http://www.renren.com/<{$commentList.list[cl].renren_id}>" style="text-align:center; display:inline-block;">
+                		<img src="<{$commentList.list[cl].user_avatar[1]->url}>">
+                	</a>
+                </div>
+                <div class="comment_content"> 
+                	<a href="http://www.renren.com/<{$commentList.list[cl].renren_id}>" class="linkgreen">
+                		<{$commentList.list[cl].user_name}>:
+                	</a>&nbsp; 
+                	<span style="word-break:break-all;/">
+                		<{$commentList.list[cl].comment_text}>
+                	</span> 
+                	<span class="pass_time"><{$commentList.list[cl].comment_createtime}> </span>
+                  <div class="clr"></div>
+				  <{if $detail.wancheng == 1 || $detail.wancheng == 2}>
+                  <div class="comment_op"> 
+                  	<a href="javascript:void(0);" class="linkgreen replycomment" rel="<{$commentList.list[cl].comment_id}>">回复</a> 
+                  </div>
+                  <div class="blank1"></div>
+                  <div class="reply_box" id="reply_box_<{$commentList.list[cl].comment_id}>">
+                    <div class="blank"></div>
+                    <form name="comment__form" rel="0" class="comment_form" method="POST" action="<{$web_app_url}>/act/detail/id/<{$detail.id}>">
+                      <div class="reply_content">
+                        <textarea rel="回复 <{$commentList.list[cl].user_name}>:" name="content">回复 <{$commentList.list[cl].user_name}>:</textarea>
+                        <input name="ajax" value="1" type="hidden">
+                        <input name="comment_pid" value="<{$commentList.list[cl].id}>" type="hidden">
+                      </div>
+                      <div class="blank"></div>
+                   
+                      <div>
+                        <div class="ui-button send_btn" rel="green">
+                           <input name="" value="回复" type="submit" class="btn-red2" style="width:50px;margin-right:12px;" onclick=""/>
+                         
+                        </div>
+                      </div>
+                      <div class="blank"></div>
+                    </form>
+                  </div>
+				  <{/if}>
+                </div>
+                <div class="blank5"></div>
+              </div>
+               <!-- 评论item start -->
+              <{/section}>
+             
+            </div>
+            
+       
+          </div>
+        </div>
+        <div class="radius-ft">
+          <div class="radius-fl common-sprite"></div>
+          <div class="radius-fc w620"></div>
+          <div class="radius-fr common-sprite"></div>
+        </div>
+      </div>
+      <!--detail end--> 
+    </div>
+    <!--content end--> 
+    
+    <!--side static-->
+    <div class="sidebar fr"> 
+      <!-- 路演项目 --> 
+      <!-- 普通项目 --> 
+      <!--btn-inte  static-->
+      <div class="block-list">
+        <div class="radius-hd">
+          <div class="radius-hl common-sprite"></div>
+          <div class="radius-hc w300"></div>
+          <div class="radius-hr common-sprite"></div>
+        </div>
+        <div class="radius-bd btn-inte w308"> 
+        	<a class="btn-base btn-red-h48 common-sprite" href="#start-pinglun"> 
+        		<span class="common-sprite">
+        			<i class="common-sprite icon-sup ie6fixpic"></i>
+        			评论
+        		</span> 
+        	</a> 
+        	<a href="javascript:void(0);" class="btn-base btn-blue-h48 common-sprite"> 
+        		<span rel="666" onclick="like_act2(<{$detail.id}>, this)" class="common-sprite Js-changelike">
+        			<i class="common-sprite icon-like   ie6fixpic"></i>
+        			<{if $detail.liked == 1 }>
+        			已赞
+        			<{else}>
+        			赞
+        			<{/if}>
+        		</span> 
+        	</a> 
+        </div>
+        		
+        <div class="radius-ft">
+          <div class="radius-fl common-sprite"></div>
+          <div class="radius-fc w300"></div>
+          <div class="radius-fr common-sprite"></div>
+        </div>
+      </div>
+      <!--btn-end  static--> 
+     
+      <!--item detail  static-->
+      <div class="block-list">
+        <div class="radius-hd">
+          <div class="radius-hl common-sprite"></div>
+          <div class="radius-hc w300"></div>
+          <div class="radius-hr common-sprite"></div>
+        </div>
+        <div class="radius-bd item-detail w308">
+          <{if $detail.shenhe == 1 }>
+          <div class="tag bg-gray">审核中<span class="triangle"></span> </div>
+          <{elseif $detail.shenhe == 3}>
+          <div class="tag bg-gray">未通过<span class="triangle"></span> </div>
+          <{else}>
+          	<{if $detail.wancheng == 1 }>
+          	<div class="tag bg-red">集赞中 <span class="triangle"></span> </div>
+          	<{elseif $detail.wancheng == 2}>
+          	<div class="tag bg-blue">已完成<span class="triangle"></span> </div>
+          	<{else}>
+          	<div class="tag bg-gray">已失败<span class="triangle"></span> </div>
+          	<{/if}>
+          <{/if}>
+          <h2>目前累计支持</h2>
+          <p class="item-sum"><span><{$detail.zan}></span></p>
+          <p class="item-tips word-break">
+          	负责人:<span class="red"><{$detail.fuzeren}></span><br/>
+          	学号：<span class="red"><{$detail.xuehao}></span><br/>
+          	联系电话：<span class="red"><{$detail.dianhua}></span><br/>
+          	活动时间: <span class="red"><{$detail.shijian}></span><br/>
+          	活动地点: <span class="red"><{$detail.didian}></span><br/>
+          </p>
+          
+          <div class="detail-rate">
+            <ul class="clearfix">
+              <li> <strong> ￥<{$detail.zijin}> </strong> <span>目标资金</span> </li>
+              <li><strong><{$detail.zan}></strong><span>已筹赞 </span></li>
+              <li><strong><{$detail.shijian|date_format:"m-d"}></strong><span>活动时间</span></li> 
+              
+            
+            </ul>
+          </div>
+        </div>
+        <div class="radius-ft">
+          <div class="radius-fl common-sprite"></div>
+          <div class="radius-fc w300"></div>
+          <div class="radius-fr common-sprite"></div>
+        </div>
+      </div>
+      <!--btn-end  static--> 
+   </div>
+    <script type="text/javascript" src="./assets/jia.js" charset="utf-8"></script> 
+    <!--side end--> 
+   </div>
+</div>
+<!--main end--> 
+
+<{include file="footer.html"}>
+
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<LINK href="<{$web_host}>/common/admin/css/admin.css" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="<{$web_host}>/common/libs/jquery-1.9.1.js"></script>
+<script type="text/javascript">
+	$(function() {
+		$("#form1").submit( function () {
+			$("#result").val("");
+			if($("#rolename").val() == ""){
+				$("#rolename").focus();
+				$("#result").text("标题不能为空！");
+				return false;
+			}
+			
+			return true;
+		} );		
+	});
+</script>
+</head>
+<style type="text/css">/* CSS Document */   
+#info th {  
+ border-right: 1px solid #adceff;  
+ border-bottom: 1px solid #adceff;  
+ border-top: 1px solid #adceff;  
+ letter-spacing: 2px;  
+ text-transform: uppercase;  
+ text-align: left;  
+ padding: 6px 6px 6px 12px;  
+ background: #f4f7fc;  
+}  
+#info td {  
+ border-right: 1px solid #adceff;  
+ border-bottom: 1px solid #adceff;  
+ background: #fff;  
+ font-size:11px;  
+ padding: 6px 6px 6px 12px;  
+ 
+}  
+#info th.spec {  
+ border-left: 1px solid #adceff;  
+ border-top: 0;  
+ background: #fff;   
+}  
+</style>  
+<body>
+<TABLE cellSpacing=0 cellPadding=0 width="100%" align=center border=0>
+  	<TR height=28><TD background="<{$web_host}>/common/admin/images/title_bg1.jpg">当前位置:添加角色</TD></TR>
+  	<TR><TD bgColor=#b1ceef height=1></TD></TR>
+  	<TR height=20>
+    	<TD background="<{$web_host}>/common/admin/images/shadow_bg.jpg"></TD>
+	</TR>
+</TABLE>
+
+<div id="info" style=" margin-left:10px;">
+<font id="result" color="#CC0000"><{$result|default:""}></font>
+<form id="form1" target="_self" name="form1" method="post" action="">
+<table id="mytable" cellspacing="0" >  
+  <tr>  
+    <th scope="col" colspan="2" style="border-left:1px solid #adceff;" >添加角色</th>  
+  </tr>  
+  <tr >  
+    <td style="border-left:1px solid #adceff;" >角色名</td>
+    <td> <input type="text" name="rolename" id="rolename" style="width:150px" value=""  /></td>
+  </tr>  
+  <tr>  
+    <th scope="col"   style="border-left:1px solid #adceff;border-top:0px;" >可用权限</th>  
+    <th scope="col"   style="border-top:0px;" >选择</th>
+  </tr> 
+  <{section name=rs loop=$resList}>
+  <tr >
+    <td style="border-left:1px solid #adceff;" ><{$resList[rs].ctrl_name}></td>
+    <td><input name="res[]" type="checkbox" id="res" value="<{$resList[rs].ctrl_id}>" /></td>
+  </tr>
+  <{/section}>
+   <tr >
+    <td style="border-left:1px solid #adceff;" >&nbsp;</td>
+    <td>
+    	<input type="submit" name="Submit" value="提交" />
+	</td>
+  </tr>
+   
+</table> 
+</form>
+</div>
+
+
+</body>
+</html>

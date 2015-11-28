@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<LINK href="<{$web_host}>/common/admin/css/admin.css" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="<{$web_host}>/common/libs/jquery-1.9.1.js"></script>
+<script type="text/javascript" src="<{$web_host}>/common/libs/jquery-migrate-1.1.0.min.js"></script>
+<script language="javascript" type="text/javascript" src="<{$web_host}>/common/libs/My97DatePicker/WdatePicker.js"></script>
+
+<script type="text/javascript">
+	$(function() {
+		
+		$("#start").focus(function(){
+			
+			WdatePicker({
+					dateFmt:'yyyy-MM-dd',
+					maxDate:'#F{$dp.$D(\'end\')||\'2099-01-01\'}'
+			});
+		});
+		$("#end").focus(function(){
+			
+				WdatePicker({
+					dateFmt:'yyyy-MM-dd',
+					minDate:'#F{$dp.$D(\'start\')}',
+					maxDate:'2099-01-01'	
+				});
+		});
+		
+		
+		
+		$("#form1").submit( function () {
+			$("#result").val("");
+			
+			return true;
+		} );		
+	});
+</script>
+</head>
+<style type="text/css">/* CSS Document */   
+#info th {  
+ border-right: 1px solid #adceff;  
+ border-bottom: 1px solid #adceff;  
+ border-top: 1px solid #adceff;  
+ letter-spacing: 2px;  
+ text-transform: uppercase;  
+ text-align: left;  
+ padding: 6px 6px 6px 12px;  
+ background: #f4f7fc;  
+}  
+#info td {  
+ border-right: 1px solid #adceff;  
+ border-bottom: 1px solid #adceff;  
+ background: #fff;  
+ font-size:11px;  
+ padding: 6px 6px 6px 12px;  
+ 
+}  
+#info th.spec {  
+ border-left: 1px solid #adceff;  
+ border-top: 0;  
+ background: #fff;   
+}  
+</style>  
+<body>
+<TABLE cellSpacing=0 cellPadding=0 width="100%" align=center border=0>
+  	<TR height=28><TD background="<{$web_host}>/common/admin/images/title_bg1.jpg">当前位置:前台用户日志</TD></TR>
+  	<TR><TD bgColor=#b1ceef height=1></TD></TR>
+  	<TR height=20>
+    	<TD background="<{$web_host}>/common/admin/images/shadow_bg.jpg"></TD>
+	</TR>
+</TABLE>
+
+<div id="stat" style="margin-left:20px;">
+	<form id="form1"   target="_self" name="form1" method="post" action="" >
+		用户类型:
+		<select name="usertype" id="user"> 
+			<option value="2" >不限</option>
+			<option value="0" >学生</option>
+			<option value="1" >教师</option>
+		</select>
+		&nbsp;
+		用户姓名:<input id="username" name="username" size="10" type="text"/>
+		&nbsp;
+		时间段:<input id="start" name="start" class="Wdate" type="text"  />
+		&nbsp;至&nbsp;
+		<input id="end" name="end" class="Wdate" type="text"  />
+		&nbsp;
+		<input name="submit" type="submit" value="查询" />
+		&nbsp;
+	</form>
+	<font color="#CC0000" id="result"><{$result|default:""}></font>
+</div>
+<div id="info" style=" margin-top:20px; margin-left:10px;">
+	
+		<{if isset($logList)}>
+		<table id="mytable" cellspacing="0" >  
+		  <tr>  
+		    <th scope="col" width="200px" style="border-left:1px solid #adceff;" >用户姓名</th>  
+		    <th scope="col" width="100px" >用户类型</th> 
+		    <th scope="col" width="200px" >用户行为</th>   
+		    <th scope="col" width="200px" >产生时间</th>  
+		  </tr>  
+		  <{section name=ll loop=$logList.list}>
+		  <tr >  
+		   	<td style="border-left:1px solid #adceff;"><{$logList.list[ll].user_nickname|default:"未填写"}>(ID:<{$logList.list[ll].user_id}>)</td>
+		    <td>
+		    	<{if $logList.list[ll].uaction_type == 0}>
+		    		学生
+				<{else}>
+					教师
+				<{/if}>		    
+		    </td>
+		    <td><{$logList.list[ll].ulog_content}></td>
+		    <td><{$logList.list[ll].ulog_create_time}></td>
+		  </tr>  
+		  <{sectionelse}>
+		  <tr >
+		    <th class="spec" colspan="3">暂无记录</td>
+		  </tr>
+		  <{/section}>
+		</table>  
+		<{page info=$logList web_host=$web_host web_app_url=$web_app_url url="/stat/frontlog/usertype/<{$usertype|default:"2"}>/username/<{$username|default:"null"}>/start/<{$start|default:"0"}>/end/<{$end|default:"0"}>"}>
+		<{/if}>
+</div>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>评论列表</title>
+<LINK href="<{$web_host}>/common/admin/css/admin.css" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="<{$web_host}>/common/libs/jquery-1.9.1.js"></script>
+</head>
+<style type="text/css">/* CSS Document */   
+#info th {  
+ border-right: 1px solid #adceff;  
+ border-bottom: 1px solid #adceff;  
+ border-top: 1px solid #adceff;  
+ letter-spacing: 2px;  
+ text-transform: uppercase;  
+ text-align: left;  
+ padding: 6px 6px 6px 12px;  
+ background: #f4f7fc;  
+}  
+#info td {  
+ border-right: 1px solid #adceff;  
+ border-bottom: 1px solid #adceff;  
+ background: #fff;  
+ font-size:11px;  
+ padding: 6px 6px 6px 12px;  
+ 
+}  
+#info th.spec {  
+ border-left: 1px solid #adceff;  
+ border-top: 0;  
+ background: #fff;   
+}  
+</style>  
+<body>
+<TABLE cellSpacing=0 cellPadding=0 width="100%" align=center border=0>
+  	<TR height=28><TD background="<{$web_host}>/common/admin/images/title_bg1.jpg">当前位置:评论列表</TD></TR>
+  	<TR><TD bgColor=#b1ceef height=1></TD></TR>
+  	<TR height=20>
+    	<TD background="<{$web_host}>/common/admin/images/shadow_bg.jpg"></TD>
+	</TR>
+</TABLE>
+
+<div id="stat" style="margin-left:20px;">
+	<font color="#CC0000" id="result"><{$result|default:""}></font>
+</div>
+<div id="info" style=" margin:20px 10px;">
+		>活动“<a href="<{$web_app_url}>/activity/actdetail/id/<{<{$actDetail.id}>}>"><{$actDetail.biaoti}></a>”的评论列表<br/><br/>
+		<{if isset($commentList)}>
+		<table id="mytable" cellspacing="0" >  
+		  <tr>  
+		    <th scope="col" width="20px" style="border-left:1px solid #adceff;" ></th>  
+		    <th scope="col" width="50px" >评论人</th> 
+		    <th scope="col" width="300px" >内容</th> 
+		    <th scope="col" width="100px" >时间</th>   
+		    <th scope="col" width="100px" >操作</th>  
+		  </tr>  
+		   <{section name=cl loop=$commentList.list}>
+		  <tr >  
+		   	
+		    <td style="border-left:1px solid #adceff;" ><{$commentList.list[cl].comment_id}></td>
+		    <td>
+		    	<a href="http://www.renren.com/<{$commentList.list[cl].renren_id}>" style="text-align:center; display:inline-block;">
+                	<{$commentList.list[cl].user_name}>
+            	</a>
+		   	</td>
+		    <td><{$commentList.list[cl].comment_text}></td>
+		     <td><{$commentList.list[cl].comment_createtime}></td>
+		    <td><a href="<{$web_app_url}>/activity/comment/id/<{<{$actDetail.id}>}>/do/del/cid/<{$commentList.list[cl].comment_id}>">删除</a></td>
+		  </tr>  
+		  <{sectionelse}>
+		  <tr >
+		    <th class="spec" colspan="5">暂无记录</td>
+		  </tr>
+		  <{/section}>
+		</table>  
+		<{/if}>
+</div>
+</body>
+</html>

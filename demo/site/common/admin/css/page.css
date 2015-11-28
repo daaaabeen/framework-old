@@ -1,0 +1,82 @@
+@CHARSET "UTF-8";
+
+/*页码列表*/
+#Paging{
+	margin-top:20px;
+	width:723px;
+	height:22px;
+	color:#fff;
+	font-weight:600;
+}
+#Paging .paging_show{
+	float:left;
+	display:inline;
+}
+#Paging ul li{
+	float:left;
+	display:inline;
+}
+#Paging .Paging_btn{
+	background:url(../images/arrowmiddle.png) no-repeat;
+	width:22px;
+	height:20px;
+	text-align:center;
+	cursor:pointer;
+	margin-left:6px;
+	padding:2px 0 0 0;
+}
+#Paging a{
+	color:#fff;
+	font-weight:600;
+}
+#Paging .Paging_pre{
+	background:url(../images/arrowleft.png) no-repeat;
+	width:22px;
+	height:22px;
+}
+#Paging .Paging_pre a{
+	display:block;
+}
+#Paging .Paging_pre a:hover{
+	background:url(../images/arrow1.png) no-repeat;
+	width:22px;
+	height:22px;
+}
+#Paging .Paging_btn a{
+	display:block;
+}
+#Paging .Paging_btn a:hover{
+	background:url(../images/arrowback.png) no-repeat;
+	height:20px;
+	width:22px;
+	margin-top:-2px;
+	padding-top:2px;
+}
+#Paging .Paging_now{
+	background:url(../images/arrowback.png) no-repeat;
+	width:22px;
+	height:20px;
+	text-align:center;
+	cursor:pointer;
+	margin-left:6px;
+	padding-top:2px;
+}
+
+#Paging .Paging_dot{
+	margin-left:6px;
+}
+#Paging .Paging_next{
+	margin-left:6px;
+	background: url(../images/arrowright.png) no-repeat;
+	width:22px;
+	height:22px;
+}
+#Paging .Paging_next a{
+	display:block;
+}
+#Paging .Paging_next a:hover{
+	background: url(../images/arrow2.png) no-repeat;
+	width:22px;
+	height:22px;
+}
+/*页码列表*/

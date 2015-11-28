@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<title>南开集赞网</title>
+<meta name="keywords" content="南开 众筹 创业 项目 投资 支持">
+<meta name="description" content="在南开众筹网发布活动或项目，获得投资支持，实现你的梦想">
+<link rel="bookmark" type="image/x-icon" href="#">
+<!--各种图标，多个设备支持-->
+<link rel="shortcut icon" type="image/png" href="#">
+<link rel="icon" type="image/png" href="#">
+<link rel="apple-touch-icon" href="#">
+<!--public js&css start-->
+<!--public js&css end -->
+<script type="text/javascript" src="<{$web_host}>/common/index/assets/jqueryv182.js"></script>
+<script type="text/javascript" src="<{$web_host}>/common/index/assets/slide.js"></script>
+<link rel="stylesheet" type="text/css" href="<{$web_host}>/common/index/assets/style2.css">
+<script language="javascript" type="text/javascript" src="<{$web_host}>/common/libs/My97DatePicker/WdatePicker.js"></script>
+<script type="text/javascript" src="<{$web_host}>/common/index/assets/15bprojectjs"></script>
+<link type="text/css" rel="stylesheet" href="<{$web_host}>/common/index/assets/tinymce.css">
+<script type="text/javascript" src="<{$web_host}>/common/libs/xheditor-1.2.1/xheditor-1.2.1.min.js"></script>
+<script type="text/javascript" src="<{$web_host}>/common/libs/xheditor-1.2.1/xheditor_lang/zh-cn.js"></script>
+<script type="text/javascript" src="<{$web_host}>/common/libs/upload/jquery.uploadify.min.js"></script>
+<link rel="stylesheet" type="text/css" href="<{$web_host}>/common/libs/upload/uploadify.css">
+</head>
+<script type="text/javascript">
+	$(function() {
+		
+		$("#project-time").focus(function(){
+			
+			WdatePicker({
+					dateFmt:'yyyy-MM-dd HH:mm:ss',
+			});
+		});
+		
+		var editor = $('#content').xheditor({
+			upLinkUrl:"<{$web_host}>/common/upload.php",
+			upLinkExt:"zip,rar,txt",
+			upImgUrl:"<{$web_host}>/common/upload.php",
+			upImgExt:"jpg,jpeg,gif,png",
+			upFlashUrl:"<{$web_host}>/common/upload.php",
+			upFlashExt:"swf",
+			upMediaUrl:"<{$web_host}>/common/upload.php",
+			upMediaExt:"avi",
+			cleanPaste:1,
+			internalScript:false,
+			inlineScript:false,
+			internalStyle:false,
+			inlineStyle:false
+		});
+		var answereditor = $('#intro').xheditor({
+			upLinkUrl:"<{$web_host}>/common/upload.php",
+			upLinkExt:"zip,rar,txt",
+			upImgUrl:"<{$web_host}>/common/upload.php",
+			upImgExt:"jpg,jpeg,gif,png",
+			upFlashUrl:"<{$web_host}>/common/upload.php",
+			upFlashExt:"swf",
+			upMediaUrl:"<{$web_host}>/common/upload.php",
+			upMediaExt:"avi",
+			cleanPaste:1,
+			internalScript:false,
+			inlineScript:false,
+			internalStyle:false,
+			inlineStyle:false
+		});
+		
+		$('#file_upload').uploadify({
+			'formData'     : {
+			},
+			'swf'      : '<{$web_host}>/common/libs/upload/uploadify.swf',
+			'uploader' : '<{$web_app_url}>/upload/upload/', 
+			'multi':true,
+			'auto':true,
+			'fileTypeDesc':"请选择图片文件",
+			'fileTypeExts':'*.jpg;*.jpeg;*.png;*.gif;*.bmp',
+			'fileSizeLimit': '5120KB', 
+			'buttonText':"选择图片", 
+			'width' : 100, 
+			'height':20, 
+			'cancelImg' : '<{$web_host}>/common/libs/upload/uploadify-cancel.png',
+			'onUploadError' : function(file, errorCode, errorMsg, errorString) {
+		            alert('The file ' + file.name + ' could not be uploaded: ' + errorString);
+		    },
+		    'onUploadStart' : function(file) {
+		    	$("#picstate").val("1"); 
+	        },
+	        'onCancel' : function(file) {
+	        	$("#picstate").val("0"); 
+	        },
+		    'onUploadSuccess' : function(file, data, response) {
+		    	//alert('The file ' + file.name + ' was successfully uploaded with a response of ' + response + ':' + data);
+	            var myObject = eval('(' + data + ')');
+	            //alert(myObject.result);
+	            //alert(myObject.msg);
+	            if(myObject.result == '0'){
+		            $("#img").html(myObject.msg);
+		            $("#picstate").val("0");//0表示没有图片上传 1表示图片上传中 2表示图片上传成功
+		            //alert("a");
+	            }else{
+	            	$("#hidFileID").attr("value",myObject.result);
+		            $("#up-img").html("<img id=\"image\" width=\"225\" height=\"240\" src=\""+ myObject.msg +"\">");
+		            $("#picstate").val("2");
+		            //alert(myObject.msg);
+	            }
+	            
+		    }
+		});
+		
+		$("#form1").submit( function () {
+			
+			$('#content').val(editor.getSource());//加上这句防止提交数据为空
+			$('#intro').val(answereditor.getSource());
+			//return false;
+			if($("#name").val() == ""){
+				alert("请填写活动标题");
+				$("#name").focus();
+				return false;
+			} 
+			if($("#price").val() == ""){
+				alert("请填写筹资金额");
+				$("#price").focus();
+				return false;
+			} 
+			if($("#type").val() == ""){
+				alert("请填写活动类型");
+				$("#type").focus();
+				return false;
+			} 
+			if($("#project-time").val() == ""){
+				alert("请填写活动时间");
+				$("#project-time").focus();
+				return false;
+			} 
+			if($("#addr").val() == ""){
+				alert("请填写活动地点");
+				$("#addr").focus();
+				return false;
+			} 
+			if($("#hidFileID").val() == ""){
+				alert("请上传正确的海报");
+				$("#hidFileID").focus();
+				return false;
+			} 
+			if($("#charge").val() == ""){
+				alert("请填写负责人姓名");
+				$("#charge").focus();
+				return false;
+			} 
+			if($("#number").val() == ""){
+				alert("请填写负责人学号");
+				$("#number").focus();
+				return false;
+			} 
+			if($("#phone").val() == ""){
+				alert("请填写负责人电话");
+				$("#phone").focus();
+				return false;
+			} 
+			if($("#intro").val() == ""){
+				alert("请填写活动意义");
+				$("#intro").focus();
+				return false;
+			} 
+			if($("#content").val() == ""){
+				alert("请填写活动内容");
+				$("#content").focus();
+				return false;
+			} 
+			return true;
+		} );
+		
+		
+	});
+	
+
+</script>
+
+
+<body>
+<!--header static-->
+<{include file="header.html"}>
+<!--header-end-->
+<!--main static-->
+<link rel="stylesheet" type="text/css" href="<{$web_host}>/common/index/assets/69eproject.css">
+<script type="text/javascript" src="<{$web_host}>/common/index/assets/30dproject.js"></script>
+
+<!--main static-->
+<div class="main clearfix">
+	<div class="wrap clearfix">
+		<!--flow step static-->
+
+		<!--flow step end-->
+		<!--content static-->
+		<div class="content fl">
+			
+			<!--project start-->
+			<div class="project-box">
+				<div class="radius-hd">
+					<div class="radius-hl common-sprite"></div>
+					<div class="radius-hc w705"></div>
+					<div class="radius-hr common-sprite"></div>
+				</div>
+				<div class="radius-bd project-con w713">
+					<form id="form1" action="<{$web_app_url}>/act/modify/id/<{$detail.id}>" method="post" >
+
+					<div class="tit-wrap">
+						<h3>修改项目</h3>
+					</div>					
+					<div class="project-edit">
+						<div class="form-item clearfix">
+							<label>&nbsp;</label><span class="error-text"><{$msg|default:""}></span>
+						</div>
+						<div class="form-item clearfix">
+							<label>项目名称：</label>
+							<input name="name" type="text" class="inp-w310" id="name" value="<{$detail.biaoti}>" placeholder="名称不可超过40个字" ><span id="wx-validator-name-required" class="error-text">不能为空</span>
+						</div>
+						<div class="form-item clearfix">
+							<label>筹资金额：</label>
+							<input name="price" type="text" id="price" value="<{$detail.zijin}>" ><span class="input-notes" style="margin-left:5px">元</span>
+						</div>
+						
+						<div class="form-item clearfix">
+							<label>类别：</label>
+							<div id="Js-select-cate" class="option-sort">
+								<{section name=tl loop=$typeList}>
+								<span data-id="<{$typeList[tl].code}>" <{if $typeList[tl].code == $detail.leibie}> class="select" <{/if}> ><{$typeList[tl].name}></span> 
+								<{/section}> 							
+							</div>
+							<input id="type" class="hidden" name="type" value="<{$detail.leibie}>">
+						</div>
+						
+						<div class="form-item clearfix">
+							<label>项目时间：</label>
+							<input name="time" id="project-time" class="Wdate" type="text" value="<{$detail.shijian}>" ><span class="input-notes" style="margin-left:5px"></span><span id="wx-validator-deal_days-required" class="error-text hidden" style="display: inline;">不能为空</span>
+						</div>
+						
+						<div class="form-item clearfix">
+							<label>项目地点：</label>
+							<input name="addr" id="addr" type="text" placeholder="请填写详细地址" value="<{$detail.didian}>" ><span class="input-notes" style="margin-left:5px"></span><span id="wx-validator-deal_days-required" class="error-text hidden" style="display: inline;">不能为空</span>
+						</div>
+						<div class="form-item clearfix">
+							<label>项目封面：</label>
+							<div style="margin-left:120px">
+							<input id="file_upload" name="file_upload" type="file" multiple >
+							<input type="hidden" name="picid" id="hidFileID" value="<{$detail.pic_id}>" />
+							<input type="hidden" name="picstate" id="picstate" value="0" />
+							</div>
+						</div>
+						<div class="form-item clearfix">
+							<label>负责人：</label>
+							<input name="charge" id="charge" type="text" value="<{$detail.fuzeren}>" placeholder="活动负责人"><span class="input-notes" style="margin-left:5px"></span><span id="wx-validator-deal_days-required2" class="error-text hidden" style="display: inline;">不能为空</span>
+						</div>
+						<div class="form-item clearfix">
+							<label>学号：</label>
+							<input name="number" id="number" type="text"  placeholder="负责人学号" value="<{$detail.xuehao}>"><span class="input-notes" style="margin-left:5px"></span><span id="wx-validator-deal_days-required3" class="error-text hidden" style="display: inline;">不能为空</span>
+						</div>
+						<div class="form-item clearfix">
+							<label>联系电话：</label>
+							<input name="phone" id="phone" type="text" placeholder="负责人联系电话" value="<{$detail.dianhua}>" ><span class="input-notes" style="margin-left:5px"></span><span id="wx-validator-deal_days-required4" class="error-text hidden" style="display: inline;">不能为空</span>
+						</div>
+						<div class="form-item clearfix">
+							<label>项目意义：</label>
+							<textarea id="intro" style="width:75%;height:150px" name="intro" ><{$detail.yiyi}></textarea><span id="wx-validator-brief-required" class="error-text">不能为空</span>
+							
+						</div>
+						<div class="form-item clearfix">
+							<label>项目详情：</label>
+							<textarea id="content" style="width:75%;height:300px" name="content" ><{$detail.neirong}></textarea><span id="wx-validator-content-required" class="error-text">不能为空</span>
+						
+						</div>
+
+						<div class="action tr">
+							<a  id="savenext" class="btn-base btn-red-h48 common-sprite">
+								<span class="common-sprite"><input style="background:#7f0d6f;color:white;cursor:pointer" type="submit" value="修改"></span>
+							</a>
+						</div>
+					</div>
+					</form>
+				</div>
+				<div class="radius-ft">
+					<div class="radius-fl common-sprite"></div>
+					<div class="radius-fc w705"></div>
+					<div class="radius-fr common-sprite"></div>
+				</div>
+			</div>
+			
+			<!--project end-->
+			
+		</div>
+		<!--content end-->
+		<!--side static-->
+		<div class="sidebar fr">
+			<!--list item static-->
+			<div class="block-list">
+				<div class="list-item">
+					<a class="image item-figure" id="up-img" href="javascript:void(0);" title="">
+						<{if $detail.pic_id != "" }>
+						<img id="image" width="225" height="216" src="<{$web_host}>/common/upload/images/<{$detail.pic_link}>" alt=""> 
+						<{else}>
+						<img id="image" width="225" height="216" src="<{$web_host}>/common/index/assets/empty_thumb.gif" alt=""> 
+						<{/if}>
+					</a>
+					<h3><a id="Js-name" href="javascript:;"></a></h3>
+					
+				</div>
+			</div>
+			<!--list item end-->
+			<!--side-list static-->
+			<!-- <div class="block-list">
+				<div class="radius-hd">
+					<div class="radius-hl common-sprite"></div>
+					<div class="radius-hc w215"></div>
+					<div class="radius-hr common-sprite"></div>
+				</div>
+				<div class="radius-bd side-list w223">
+					<div class="sidetit"><h3>支付常见问题解答</h3></div>
+					<div class="side-container">
+						<ul class="clearfix">
+							<li><a href="#">如何支持一个项目?</a></li>
+							<li><a href="#">如果项目没有达到目标金额？</a></li>
+							<li><a href="#">如何发起人能够实现他们的承诺?</a></li>
+							<li><a href="#">平台接受慈善项目类的提案么?</a></li>
+							<li><a href="#">什么样的项目适合我们的平台?</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="radius-ft">
+					<div class="radius-fl common-sprite"></div>
+					<div class="radius-fc w215"></div>
+					<div class="radius-fr common-sprite"></div>
+				</div>
+			</div> -->
+			<!--side-list end-->
+		</div>
+		<!--side end-->
+	</div>
+</div>
+<script>
+	function HwForm_before(){
+		if(!$("#Js-cate").val()){
+			alert("请选择类别");
+			return false;
+		}
+		if($("#picstate").val() == 0){
+			alert("请上传海报");
+			return false;
+		}
+		return true;
+	}
+	function HwForm(data){
+		if(data.status == 1){
+			wx.alert("保存成功",function(){
+				location.href = data.jump;
+			})
+		}
+		else{
+			wx.alert(data.info);
+		}
+	}
+	$("input[name='name']").blur(function(){
+		$("#Js-name").text($(this).val());
+
+		wx.sendData("/project-gettag","name="+$("#Js-name").text(),function(data){
+			$("#Js-tag").val(data.tags);
+		});
+	});
+	$("input[name='limit_price']").blur(function(){
+		$("#Js-price").text("￥"+$(this).val());
+	});
+	$("input[name='deal_days']").blur(function(){
+		$("#Js-days").text($(this).val()+"天");
+	});
+	
+	$("#Js-select-cate").delegate('span', 'click', function(event) {
+		$(this).addClass('select').siblings().removeClass('select');
+		$("#type").val($(this).attr("data-id"));
+	});
+
+	KE.setting.skinsPath = "/static/zhongchou/kindeditor/skins/";
+	KE.setting.pluginsPath = "/static/zhongchou/kindeditor/plugins/";
+	KE.show({urlType:'domain', id:'Js-description', items : ['title',' | ','fimage',' | ','link','removeformat',' | '], skinType: 'tinymce',allowFileManager : false,resizeMode : 0, newlineTag:'nl',height:500});
+	window['HwForm_before'] = function() {
+		KE.util.setData('Js-description');
+		return true;
+	}
+</script>
+<!--main end-->
+
+
+<!--main end-->
+
+<!--footer static-->
+<{include file="footer.html"}>
+</body>
+</html>

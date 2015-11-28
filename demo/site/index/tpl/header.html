@@ -1,0 +1,52 @@
+<!--header static-->
+<div class="header">
+  <div class="wrap">
+    <div class="img-logo">
+     <img src="<{$web_host}>/common/index/assets/images/logo.png" />
+    </div>
+    <!--menu start-->
+    <div class="menu">
+      <ul class="clearfix">
+        <li class="<{if $web_action=="index"}>select<{/if}>"><a href="<{$web_host}>">首页 </a></li>
+        <li class="<{if $web_action=="all"}>select<{/if}>"><a href="<{$web_app_url}>/act/showall">集赞项目 </a></li>
+        <li class="<{if $web_action=="add"}>select<{/if}>"><a href="<{$web_app_url}>/act/add">发起项目 </a></li>
+        <li class="<{if $web_action=="news"}>select<{/if}>"><a href="<{$web_app_url}>/news">新闻公告</a></li>
+      </ul>
+    </div>
+    <!--menu end--> 
+    <!--search start-->
+    
+    <!--search end--> 
+    
+    <{if !isset($__USERINFO__)}>
+    
+    <!--login start-->
+    <div class="login-wrap"> 
+    	<a href="<{$web_app_url}>/account/login">登录</a>
+    </div>
+    <!--login end--> 
+    
+    <{else}>
+       <!-- user menu start-->
+    <div class="user-menu " id="jsddm">
+      <div class="menu-hd tx">
+        <a href="http://www.renren.com/<{$__USERINFO__.renren_id}>" class="tit">
+          <img id="headeravatar" src="<{$__USERINFO__.user_avatar[0]->url}>">
+          <span class="ie6fixpic"><{$__USERINFO__.user_name|truncate:3:"…"}></span>
+        </a>
+      </div>
+      <div class="menu-bd JS-myinfo">
+        <ul class="clearfix">
+          <ul>
+          	<li class="sup"><a class="ie6fixpic" href="<{$web_app_url}>/act/support">支持的项目</a></li>
+            <li class="spo"><a class="ie6fixpic" href="<{$web_app_url}>/act/myact">发起的项目</a></li>
+            <li class="exit bn"><a class="ie6fixpic" href="<{$web_app_url}>/account/logout">退出</a></li>
+          </ul>
+        </ul>
+      </div>
+    </div>
+    <!-- user menu end-->
+    <{/if}>
+  </div>
+</div>
+<!--header-end-->

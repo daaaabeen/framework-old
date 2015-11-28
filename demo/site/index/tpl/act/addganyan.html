@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<title>南开集赞网</title>
+<meta name="keywords" content="南开 众筹 创业 项目 投资 支持">
+<meta name="description" content="在南开众筹网发布活动或项目，获得投资支持，实现你的梦想">
+<link rel="bookmark" type="image/x-icon" href="#">
+<!--各种图标，多个设备支持-->
+<link rel="shortcut icon" type="image/png" href="#">
+<link rel="icon" type="image/png" href="#">
+<link rel="apple-touch-icon" href="#">
+<!--public js&css start-->
+<!--public js&css end -->
+<script type="text/javascript" src="<{$web_host}>/common/index/assets/jqueryv182.js"></script>
+<script type="text/javascript" src="<{$web_host}>/common/index/assets/slide.js"></script>
+<link rel="stylesheet" type="text/css" href="<{$web_host}>/common/index/assets/style2.css">
+<script type="text/javascript" src="<{$web_host}>/common/index/assets/15bprojectjs"></script>
+<link type="text/css" rel="stylesheet" href="<{$web_host}>/common/index/assets/tinymce.css">
+<script type="text/javascript" src="<{$web_host}>/common/libs/xheditor-1.2.1/xheditor-1.2.1.min.js"></script>
+<script type="text/javascript" src="<{$web_host}>/common/libs/xheditor-1.2.1/xheditor_lang/zh-cn.js"></script>
+<script type="text/javascript" src="<{$web_host}>/common/libs/upload/jquery.uploadify.min.js"></script>
+<link rel="stylesheet" type="text/css" href="<{$web_host}>/common/libs/upload/uploadify.css">
+</head>
+<script type="text/javascript">
+	$(function() {
+		
+		
+		
+		var editor = $('#content').xheditor({
+			upLinkUrl:"<{$web_host}>/common/upload.php",
+			upLinkExt:"zip,rar,txt",
+			upImgUrl:"<{$web_host}>/common/upload.php",
+			upImgExt:"jpg,jpeg,gif,png",
+			upFlashUrl:"<{$web_host}>/common/upload.php",
+			upFlashExt:"swf",
+			upMediaUrl:"<{$web_host}>/common/upload.php",
+			upMediaExt:"avi",
+			cleanPaste:1,
+			internalScript:false,
+			inlineScript:false,
+			internalStyle:false,
+			inlineStyle:false
+		});
+		
+		
+		$('#file_upload').uploadify({
+			'formData'     : {
+			},
+			'swf'      : '<{$web_host}>/common/libs/upload/uploadify.swf',
+			'uploader' : '<{$web_app_url}>/upload/upload/', 
+			'multi':true,
+			'auto':true,
+			'fileTypeDesc':"请选择图片文件",
+			'fileTypeExts':'*.jpg;*.jpeg;*.png;*.gif;*.bmp',
+			'fileSizeLimit': '5120KB', 
+			'buttonText':"选择图片", 
+			'width' : 100, 
+			'height':20, 
+			'cancelImg' : '<{$web_host}>/common/libs/upload/uploadify-cancel.png',
+			'onUploadError' : function(file, errorCode, errorMsg, errorString) {
+		            alert('The file ' + file.name + ' could not be uploaded: ' + errorString);
+		    },
+		    'onUploadStart' : function(file) {
+		    	$("#picstate").val("1"); 
+	        },
+	        'onCancel' : function(file) {
+	        	$("#picstate").val("0"); 
+	        },
+		    'onUploadSuccess' : function(file, data, response) {
+		    	//alert('The file ' + file.name + ' was successfully uploaded with a response of ' + response + ':' + data);
+	            var myObject = eval('(' + data + ')');
+	            //alert(myObject.result);
+	            //alert(myObject.msg);
+	            if(myObject.result == '0'){
+		            $("#img").html(myObject.msg);
+		            $("#picstate").val("0");//0表示没有图片上传 1表示图片上传中 2表示图片上传成功
+		            //alert("a");
+	            }else{
+	            	var str = "<div id=\"img-item-"+myObject.result+"\" class=\"list-item\">";
+					str += "<input type=\"hidden\" name=\"imglist[]\"  value=\""+myObject.result+"\" />";
+					str += "<a class=\"image item-figure\"  href=\"javascript:void(0);\" title=\"\">";
+					str += "<img  width=\"225\" height=\"216\" src=\""+ myObject.msg +"\" alt=\"\">";
+					str += "</a>";
+					str += "<h3><a  href=\"javascript:;\" onclick=\"del_img("+myObject.result+");\">删除图片</a></h3>";
+					str += "</div>";
+		            $("#img-container").prepend(str);
+		            $("#picstate").val("2");
+		            //alert(myObject.msg);
+	            }
+	            
+		    }
+		});
+		
+		$("#form1").submit( function () {
+			
+			$('#content').val(editor.getSource());//加上这句防止提交数据为空
+			
+		
+			if($("#hidFileID").val() == ""){
+				alert("请上传正确的海报");
+				$("#hidFileID").focus();
+				return false;
+			} 
+			
+			if($("#content").val() == ""){
+				alert("请填写活动内容");
+				$("#content").focus();
+				return false;
+			} 
+			
+		} );
+		
+		
+	});
+	
+	var del_img = function(id){
+		//alert("1");
+		$("#img-item-"+id).remove();
+		//alert("删除成功！");
+	}
+</script>
+
+
+<body>
+<!--header static-->
+<{include file="header.html"}>
+<!--header-end-->
+<!--main static-->
+<link rel="stylesheet" type="text/css" href="<{$web_host}>/common/index/assets/69eproject.css">
+<script type="text/javascript" src="<{$web_host}>/common/index/assets/30dproject.js"></script>
+
+<form id="form1" action="<{$web_app_url}>/act/addganyan/id/<{$detail.id}>" method="post" >
+<div class="main clearfix">
+	<div class="wrap clearfix">
+		<!--flow step static-->
+
+		<!--flow step end-->
+		<!--content static-->
+		<div class="content fl">
+			
+			<!--project start-->
+			<div class="project-box">
+				<div class="radius-hd">
+					<div class="radius-hl common-sprite"></div>
+					<div class="radius-hc w705"></div>
+					<div class="radius-hr common-sprite"></div>
+				</div>
+				<div class="radius-bd project-con w713">
+					<div class="tit-wrap">
+						<h3>编辑活动感言</h3>
+					</div>					
+					<div class="project-edit">
+						<div class="form-item clearfix">
+							<label>项目名称：</label>
+							<span style="height: 28px;font-size: 14px;line-height: 28px;color: #ed5e58;"><{$detail.biaoti}></span>
+						</div>
+						
+						<div class="form-item clearfix">
+							<label>活动图片：</label>
+							<div style="margin-left:120px">
+							<input id="file_upload" name="file_upload" type="file" multiple >
+							<input type="hidden" name="picstate" id="picstate" value="0" />
+							</div>
+						</div>
+						
+						<div class="form-item clearfix">
+							<label>活动感言：</label>
+							<textarea id="content" style="width:75%;height:300px" name="content" ><{$detail.ganyan}></textarea><span id="wx-validator-content-required" class="error-text">不能为空</span>
+						
+						</div>
+
+						<div class="action tr">
+							<a  id="savenext" class="btn-base btn-red-h48 common-sprite">
+								<span class="common-sprite"><input style="background:#7f0d6f;color:white;cursor:pointer" type="submit" value="提交审核"></span>
+							</a>
+						</div>
+					</div>
+					
+				</div>
+				<div class="radius-ft">
+					<div class="radius-fl common-sprite"></div>
+					<div class="radius-fc w705"></div>
+					<div class="radius-fr common-sprite"></div>
+				</div>
+			</div>
+			
+			<!--project end-->
+			
+		</div>
+		<!--content end-->
+		<!--side static-->
+		<div class="sidebar fr">
+			<!--list item static-->
+			<div id="img-container" class="block-list">
+				<{section name=pl loop=$pic_list}>
+				<div id="img-item-<{$pic_list[pl].pic_id}>" class="list-item">
+					<input type="hidden" name="imglist[]"  value="<{$pic_list[pl].pic_id}>" />
+					<a class="image item-figure"  href="javascript:void(0);" title="">
+						<img  width="225" height="216" src="<{$web_host}>/common/upload/images/<{$pic_list[pl].pic_link}>" alt="">
+					</a>
+					<h3><a  href="javascript:;" onclick="del_img(<{$pic_list[pl].pic_id}>);">删除图片</a></h3>
+				</div>
+				<{/section}>
+			</div>
+
+		</div>
+		<!--side end-->
+	</div>
+</div>
+</form>
+<!--main end-->
+
+<!--footer static-->
+<{include file="footer.html"}>
+</body>
+</html>
