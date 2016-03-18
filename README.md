@@ -1,8 +1,8 @@
-BeenFrameWork
-=============
-一个简单易用的php MVC框架 适合初学者
+### BF
 
-框架源码在src/been文件夹下
+这是一个简单易用的php MVC框架 适合初学者
+
+框架源码在src/BF文件夹下
 
 demo目录下为一个经典的目录结构
 
@@ -16,4 +16,5 @@ model是数据模型类的目录
 
 setting目录下是配置文件
 
-common目录下是js css img 文件
+asset目录下是js css img 文件
+
