@@ -1,5 +1,5 @@
 <?php
-class file extends Model
+class file extends \Been\Model
 {
 	public function addfile($name, $link, $type)
 	{

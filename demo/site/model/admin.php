@@ -5,7 +5,7 @@
 *  QQ:281443751
 *  Email:binbin1129@126.com
 **/
-class admin extends Model
+class admin extends \Been\Model
 {
 
 

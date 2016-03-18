@@ -1,5 +1,5 @@
 <?php
-class Comment extends Model {
+class Comment extends \Been\Model {
 	
 	public function addCommon($act_id,$content,$user,$to_user=0){
 		$sql = "INSERT INTO `zc_comment` (`comment_id`, `comment_text`, `comment_create_userid`, `comment_to_userid`, `huodong_id`, `comment_createtime`) 

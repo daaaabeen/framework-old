@@ -1,5 +1,5 @@
 <?php
-class news extends Model{
+class news extends \Been\Model{
 	
 	/**
 	 * 获取新闻列表

@@ -1,6 +1,6 @@
 <?php
 //插入一条日志，获取用户登录记录（查看一条，查看多条），按时段查看网站浏览量
-class log extends Model{
+class log extends \Been\Model{
 	
 	private $__userlogin=1;
 	private $__sitevisite=0;

@@ -1,5 +1,6 @@
 <?php
-class user extends Model {
+
+class user extends \Been\Model {
 	
 	/**
 	 * 注册用户

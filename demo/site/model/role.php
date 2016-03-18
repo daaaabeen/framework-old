@@ -1,5 +1,5 @@
 <?php
-class role extends Model
+class role extends \Been\Model
 {
 
 	/**

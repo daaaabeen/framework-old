@@ -1,6 +1,6 @@
 <?php
 include_once "Filter.class.php";
-class appFilter extends Filter{
+class appFilter extends \Been\Filter{
 	
 	protected $_openRS = array(
 			'Index' => array('Test'),

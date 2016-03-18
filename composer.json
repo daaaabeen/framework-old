@@ -1,6 +1,6 @@
 {
     "name": "been/framework",
-    "description": "个简单易用的mvc框架",
+    "description": "一个简单易用的mvc框架",
     "require": {
         "php": ">5.3"
     },

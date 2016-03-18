@@ -1,5 +1,5 @@
 <?php
-class activity extends Model{
+class activity extends \Been\Model{
 	
 	protected $_typeList = array(
 						array("code"=>1,"name"=>"公益"),

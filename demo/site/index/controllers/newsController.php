@@ -1,5 +1,6 @@
 <?php
-class NewsController extends Controller {
+
+class NewsController extends \Been\Controller {
 	public function __construct() {
 		parent::__construct ();
 		$this->view->web_host = $this->getRequest ()->hostUrl;
@@ -10,9 +11,9 @@ class NewsController extends Controller {
 		$this->getView()->web_action = "news";
 		$page = $this->getRequest()->get("page")? $this->getRequest()->get("page") : 1 ;
 		$page_size = 10;
-		$news = new news();
-		$newsList = $news->get_news_list($page,$page_size);
-		$this->getView()->news = $newsList;
+		// $news = new news();
+		// $newsList = $news->get_news_list($page,$page_size);
+		// $this->getView()->news = $newsList;
 		$this->getView()->display("index.html");
 	}
 	

@@ -1,5 +1,5 @@
 <?php
-class picture extends Model{
+class picture extends \Been\Model{
 	
 	/**
 	 * 添加图片

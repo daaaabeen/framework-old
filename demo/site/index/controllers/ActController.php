@@ -1,5 +1,5 @@
 <?php
-class ActController extends Controller {
+class ActController extends \Been\Controller {
 	
 	public function __construct() {
 		parent::__construct ();
@@ -38,14 +38,14 @@ class ActController extends Controller {
 			$userid = -1;
 		}
 		
-		$this->getView()->typeList = $act->getTypeList();
-		$actList = $act->getactivitylist($type, 2, $state, $page, 16 , $order ,$userid);
+		// $this->getView()->typeList = $act->getTypeList();
+		// $actList = $act->getactivitylist($type, 2, $state, $page, 16 , $order ,$userid);
 		//print_r($actList);
-		$this->getView()->allActNum = $act->getActNum($type, 2, 0);
-		$this->getView()->ongoingActNum = $act->getActNum($type, 2, 1);
-		$this->getView()->completeActNum = $act->getActNum($type, 2, 2);
-		$this->getView()->failureActNum = $act->getActNum($type, 2, 3);
-		$this->getView()->actList = $actList;
+		// $this->getView()->allActNum = $act->getActNum($type, 2, 0);
+		// $this->getView()->ongoingActNum = $act->getActNum($type, 2, 1);
+		// $this->getView()->completeActNum = $act->getActNum($type, 2, 2);
+		// $this->getView()->failureActNum = $act->getActNum($type, 2, 3);
+		// $this->getView()->actList = $actList;
 		
 		$this->getView()->display("showall.html");
 	}
